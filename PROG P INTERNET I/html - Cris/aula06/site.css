@@ -1,0 +1,41 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+.txt1 {
+	background-color: red;
+}
+.txt2 {
+	background-color: blue;
+	/*margin: 15px 15px 30px 10px;*/
+	margin-top: 15px;
+	margin-bottom: 30px;
+	margin-left: 10px;
+	margin-right: 15px;
+}
+.txt3 {
+	background-color: green;
+}
+.btn {
+	border: 1px solid #1989D8;
+	background-color: #12649E;
+	color: white;
+	font-weight: bold;
+	font-family: Arial;
+	/*padding: 5px 15px 5px 15px;*/
+	padding: 5px 15px;
+	/*padding: 5px;*/
+	
+	/*padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;*/
+}
+.logo {
+	position: fixed;
+	margin-top: -50px;
+}
+
+
+
+

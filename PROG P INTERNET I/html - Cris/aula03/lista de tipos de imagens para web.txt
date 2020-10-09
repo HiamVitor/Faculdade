@@ -1,0 +1,7 @@
+JPG/JPEG - Alta qualidade,não tem transparencia e não tem animação (Fotos produtos, serviços)
+
+GIF - Baixa qualidade, tem transparencia e tem animação (icones, animações de baixa qualidade)
+
+PNG - Alta qualidade, tem transparencia e não tem animação (Logomarcas, qualquer imagem efeito de transparencia)
+
+SVG - Vetor, Alta qualidade, tem transparencia e não tem animação. (Logomarcas e icon)

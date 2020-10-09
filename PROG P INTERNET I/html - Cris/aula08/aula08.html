@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>ESUCRI® - Cursos</title>
+		<link rel="stylesheet" href="site.css" type="text/css">
+	</head>
+	<body>
+		<form action="mailto:contato@esucri.com.br" method="post">
+			<label for="cpf">CPF</label><br>
+			<input type="text" name="cpf" id="cpf" maxlength="11" value="" placeholder="000.000.000-00"><br><br>
+			
+			<input type="password" name="senha" maxlength="10" placeholder="Senha"><br><br>
+			
+			<input type="date" name="data" value="2020-10-01" min="2020-09-25" max="2020-10-25"><br><br>
+			
+			<input type="number" name="valor" value="10" max="15" min="5"><br><br>		
+			
+			<input type="hidden" name="ip" value="127.0.0.1">
+			
+			<input type="file" name="arquivo"><br><br>
+			
+			<input type="checkbox" name="concordo" id="concordo" checked="checked">
+			<label for="concordo">Concordo com os termos de serviços</label>
+			<br><br>
+			
+			<fieldset>
+				<legend>Tipo de relatório</legend>
+				
+				<input type="radio" name="relatorio" id="analitico" value="analitico" checked="checked">
+				<label for="analitico">Analitico</label>
+				<br><br>
+				
+				<input type="radio" name="relatorio" id="sintetico" value="sintetico">
+				<label for="sintetico">Sintetico</label>
+			</fieldset><br>
+			
+			<select name="idade">
+				<option value="1">Menor de 18 anos</option>
+				<option value="2">18-25</option>
+				<option value="3" selected="selected">26-35</option>
+				<option value="4">36-45</option>
+				<option value="5">Maior que 45 anos</option>
+			</select><br><br>
+			
+			<select name="marca" multiple="multiple">
+				<option value="1">FORD</option>
+				<option value="2" selected="selected">GM</option>
+				<option value="3" selected="selected">KIA</option>
+				<option value="4">FIAT</option>
+			</select><br><br>
+			
+			<textarea name="comentario" rows="5" cols="30" placeholder="Comentário"></textarea><br><br>
+			
+			<button type="submit">Enviar</button>
+			
+			<button type="reset">Limpar</button>
+			
+			<button type="button">Clique aqui</button>
+		</form>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

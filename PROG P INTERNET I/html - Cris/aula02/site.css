@@ -1,0 +1,40 @@
+/*
+	Comentário
+*/
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('Roboto-Medium.ttf');
+}
+
+h1 {
+	color: red;
+	font-family: 'Russo One';
+}
+
+h2 {
+	color: #00FF00;
+	/* font-style: italic; */
+	font-family: Roboto;
+}
+
+h3 {
+	color: rgb(0, 0, 255);
+	font-weight: normal;
+}
+
+p {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
