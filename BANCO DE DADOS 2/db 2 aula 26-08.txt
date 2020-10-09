@@ -1,0 +1,71 @@
+
+
+SELECT fabricante.nome_fant,
+	   produto.nome,
+	   sum(item.quantidade),
+	   sum(item.quantidade * valor_unitario)
+	FROM fabricante inner join produto
+		on (fabricante.i_fabricantes = 
+			produto.i_fabricantes)   
+					inner join item 
+					on(produto.i_produtos = 
+						item.i_produtos)
+GROUP By 1,2
+
+(PI) fabricante.nome_fant, produto.nome,item.quantidade, item.valor_unitario
+		(fabricante) |X| (produto) |X| (item)
+
+
+----------------------------------------
+EXERCICIO 2.1 LISTA DE EXERCICIOS
+
+pessoa.nome 
+(PI) pessoa
+except
+(PI) (pessoa) |X| (venda)
+		Pessoa.nome 
+		
+SELECT pessoa.nome
+	   FROM pessoa 
+EXCEPT 
+SELECT pessoa.nome
+		FROM pessoa inner join venda on (pessoa.i_pessoas = venda.i_pessoas)
+-----------------------------------------------------
+EXERCICIO 2.2 LISTA DE EXERCICIOS
+
+
+(PI) pessoa.nome (pessoa)
+INTERSECT 
+(PI) fabricante.nome_fant (fabricante)
+
+SELECT nome FROM pessoa
+INTERSECT
+SELECT nome_fant FROM fabricante;
+--------------------------------------------------------
+EXERCICIO 2.3 LISTA DE EXERCICIOS
+CRIAR UM SQL QUE DEVERÁ RETORNAR O NOME DO PRODUTO,QUANTIDADE VENDIDA, VALOR UNITARIO NA VENDA 
+E VALOR TOTAL VENDIDO. CASO EXISTIREM PRODUTOS QUE NUNCA FORAM VENDIDOS DEVEM APARECER COM QUANTIDADE
+IGUAL A ZERO, SEU VALOR UNITARIO E VALOR TOTAL IGUAL A ZERO. IDENTIFICAR LINHAS DE PRODUTOS 
+VENDIDOS E PRODUTOS NÃO VENDIDOS, AGRUPANDO SEMPRE PARA OS PRODUTOS VENDIDOS, O SOMATÓRTIO.
+ORDERNAR OS VALORES DE FORMA DECRESCENTE.
+
+
+SELECT produto.nome,
+	   item.valor_unitario,
+	   'PRODUTO VENDIDO',
+	   SUM(item.quantidade),
+	   SUM(item.quantidade * item.valor_unitario)
+	FROM produto INNER JOIN item 
+	     ON (produto.i_produtos = item.i_produtos)
+GROUP By 1,2,3
+UNION 	
+SELECT produto.nome,
+	   produto.valor,
+	   'PRODUTO NÃO VENDIDO',
+	   0,
+	   0
+	FROM produto
+	WHERE  NOT EXISTS(SELECT 1 FROM item WHERE item.i_produtos = produto.i_produtos)
+
+
+

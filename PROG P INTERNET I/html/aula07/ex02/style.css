@@ -1,0 +1,45 @@
+.destacar {
+    background-color: yellow;
+    color: red;
+    font-weight: bold;
+}
+
+.btnBotao {
+    padding: 5px 20px;
+    border: 1px solid #12649e;
+    background-color: #154c73;
+    color: #fff;
+}
+
+.btnBotao:hover {
+    background-color: #1d6192;
+}
+
+.btnBotao:active {
+    background-color: #fff;
+    color: #154c73
+}
+
+ul li:first-child{
+    color: red;
+}
+
+ul li:last-child{
+    color: blue;
+}
+
+ul li:nth-child(2){
+    color: green;
+}
+
+p{
+    font-size: 14px !important;
+}
+
+p{
+    font-size: 12px !important;
+}
+
+#cpf:focus{
+    background-color: yellow;
+}

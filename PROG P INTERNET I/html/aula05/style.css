@@ -1,0 +1,19 @@
+span{
+    color: red;
+}
+
+a {
+    text-decoration: none;
+}
+body{
+    background-image: url('./images.jfif');
+    background-repeat: no-repeat;
+    background-position: 400px 200px;
+    background-attachment: fixed;
+
+    background-color: green url('./bg.jfif') no-repeat 400px 200px fixed;
+}
+div{
+    background-color: green;
+    background-image: url;
+}

@@ -1,0 +1,7 @@
+h1 {
+  text-align: center;
+}
+li {
+  list-style-image: url("hospital-16.png");
+  text-align: left;
+}

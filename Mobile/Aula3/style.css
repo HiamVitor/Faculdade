@@ -1,0 +1,14 @@
+body {
+    background-color: azure;
+    text-align: center
+}
+div {
+    margin-top: 10px;
+}
+label {
+    display: block;
+}
+
+input,p,div {
+    text-align: center;
+}

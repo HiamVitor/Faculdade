@@ -1,0 +1,19 @@
+﻿Projeto de Estrutura de Dados
+
+
+Professor: Fernando Del Moro.
+Aluno: Gustavo Fagundes Comin.
+Fase: 5º
+Data: 01/11/2019.
+
+
+Regras de negócio do projeto:
+Fazendo o uso de métodos de filas simplesmente encadeadas foi pensado em um sistema de 
+estoque de produtos, podendo eles serem estocados em caixas, caixas de plástico, caixas de 
+papelão, pallets, por peças, embalados em plástico ou em containers. Pensando 
+especificamente em um estoque de fábrica onde os produtos ficam comumente empilhados 
+ou em prateleiras, definimos um máximo de peso para os produtos, onde a excedência do 
+mesmo poderia acarretar perda, quebra de produtos ou mesmo desmoronamento das 
+prateleiras. Sendo assim o usuário responsável define um máximo de peso, onde o utilizador não poderá excedê-lo garantindo assim maior segurança dentro do estoque. 
+O usuário no momento que cadastra um novo produto no estoque deverá informar ao sistema o nome do produto, o código de identificação para o mesmo, quantidade de produtos que estão sendo armazenados, o peso total em Kg, o valor total do produto e qual a forma de armazenamento dele, após isso o sistema dá ao usuário as opções de adicionar um novo produto ao estoque, procurar por algum produto que já esteja estocado,  remover algum produto dentro do estoque, seja para venda ou para simples exclusão do mesmo e de mostrar todos os produtos cadastrados no estoque até o momento. Dessa forma o usuário/gestor tem completo controle sobre o seu estoque, evitando possíveis superlotações ou falta de produtos, evita-se ainda possíveis quebras de prateleiras ou das caixas dos produtos, ao definir o peso máximo.
+Há ainda a preocupação com a listagem dos produtos e conferência dos mesmos, de forma que o usuário tem liberdade de ver todos os produtos cadastrados(com todas as informações dos mesmos) e ainda de procurar por um produto específico.

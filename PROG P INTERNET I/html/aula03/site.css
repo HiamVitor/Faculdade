@@ -1,0 +1,29 @@
+.upper {
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-align: justify;
+	text-indent: 20px;
+}
+.lower {
+	text-transform: lowercase;
+	text-decoration: overline;
+	text-align: right;
+}
+.capit {
+	text-transform: capitalize;
+	text-decoration: underline overline line-through;
+	text-align: center;
+}
+
+ul {
+	list-style-type: square;
+	list-style-image: url("icon.png");
+	/*
+	list-style-image: url("sonic.gif");
+	list-style-image: url("https://www.shareicon.net/data/256x256/2016/06/16/781970_interface_512x512.png");
+	*/
+}
+
+ol {
+	list-style-type: upper-alpha;
+}

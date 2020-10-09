@@ -1,0 +1,8 @@
+1
+todo professor é funcionario
+2
+alguns alunos são funcionarios
+3
+todos que matara maria, mataram joao0
+4
+todo primo maior que dois é impar

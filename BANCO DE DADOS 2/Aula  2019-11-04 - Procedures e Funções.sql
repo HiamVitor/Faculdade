@@ -1,0 +1,537 @@
+SINTAXE:
+
+CREATE [OR REPLACE] PROCEDURE 
+[schema.]nome_da_procedure[
+           (parâmetro1 [modo1] tipodedado1,  
+           	parâmetro2 [modo2] tipodedado2,  ...)]
+IS|AS $$
+Bloco PL/SQL
+END $$;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAÇÃO DA PROCEDURE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CREATE OR REPLACE PROCEDURE 
+		P_TEST_PROC(P_ARG1 IN OUT NUMERIC,
+		P_ARG2 IN OUT NUMERIC,
+	    P_RESULT IN OUT NUMERIC) 
+LANGUAGE PLPGSQL
+AS $$
+BEGIN  
+	P_RESULT := P_ARG1 + P_ARG2;
+END $$;
+
+-----------------------------------------------------------
+CHAMADA DA PROCEDURE
+-----------------------------------------------------------
+DO $$
+DECLARE
+	S NUMERIC := 0;
+	ARG1 NUMERIC := 4;
+	ARG2 NUMERIC := 2;
+BEGIN
+	RAISE NOTICE 'ARG1: %  - ARG2: %   - S: %',
+	              ARG1, ARG2, S;
+	CALL P_TEST_PROC (ARG1,ARG2, S);
+	RAISE NOTICE 'ARG1: %  - ARG2: %   - S: %',
+	              ARG1, ARG2, S;
+END $$;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+FUNÇÕES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+SINTAXE:
+
+CREATE OR REPLACE FUNCTION NOME_DA_FUNÇÃO (
+PARAMETROS [IN ]  TIPO_DE_DADO)
+RETURN TIPO_DE_DADO  IS|AS $$ 
+
+DECLARAÇÕES DE VARIÁVEIS
+
+BEGIN
+  CÓDIGO;
+END $$;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAÇÃO DA FUNÇÃO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CREATE OR REPLACE FUNCTION 
+		F_TEST_FUNC(P_ARG1 IN NUMERIC,
+		P_ARG2 IN NUMERIC,
+	    P_RESULT IN NUMERIC) 
+RETURNS NUMERIC
+LANGUAGE PLPGSQL
+AS $$
+BEGIN  
+	P_RESULT := P_ARG1 + P_ARG2;
+	RETURN P_RESULT;
+END $$;
+
+
+-----------------------------------------------------------
+CRIAÇÃO DA FUNÇÃO
+-----------------------------------------------------------
+SELECT * FROM F_TEST_FUNC(4,2,0);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Criar um bloco uma procedure para aumentar o 
+preço de cada produto em 5%, sendo que as vendas realizadas 
+no mês de setembro também deverão sofrer este reajuste, o 
+que implica na modificação dos campos de valores nas tabelas 
+de itens e vendas. 
+Obs.: NÃO é necessário modificar a tabela de contas a 
+      receber.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE PROCEDURE P_PROC_AUMENTO()
+LANGUAGE PLPGSQL
+AS $$
+DECLARE
+	CUR_VENDA CURSOR FOR 
+		SELECT I_VENDA
+		  FROM VENDAS
+		 WHERE EXTRACT(MONTH FROM DATA_VENDA) = 9;
+	CODVENDA INTEGER := 0;
+	V_PERCENT DECIMAL(4,2) := 5.00;
+BEGIN
+    UPDATE PRODUTOS
+       SET VALOR = VALOR * ((V_PERCENT/100) + 1);
+	OPEN CUR_VENDA;
+	LOOP
+		FETCH CUR_VENDA INTO CODVENDA;
+		EXIT WHEN NOT FOUND;
+		UPDATE VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * 
+		                     ((V_PERCENT/100) + 1),
+		   DESCONTO = (VALOR_VENDA * ((V_PERCENT/100) + 1)) 
+		              - VALOR_FINAL
+		 WHERE I_VENDA = CODVENDA;
+		UPDATE ITENS_VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * 
+		                     ((V_PERCENT/100) + 1)
+		 WHERE I_VENDA = CODVENDA;
+	END LOOP;
+	CLOSE CUR_VENDA;
+END $$;
+
+
+---------------------------------------------------
+
+DO $$
+BEGIN
+	CALL P_PROC_AUMENTO();
+END $$;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE PROCEDURE P_PROC_AUMENTO_VAR(
+                            P_PRODUTO IN INTEGER,
+                            P_PERCENT IN NUMERIC)
+LANGUAGE PLPGSQL
+AS $$
+BEGIN
+    UPDATE PRODUTOS
+       SET VALOR = VALOR * ((P_PERCENT/100) + 1)
+     WHERE I_PRODUTO = P_PRODUTO;
+
+	UPDATE ITENS_VENDAS
+	   SET VALOR_VENDA = VALOR_VENDA * 
+	                     ((P_PERCENT/100) + 1)
+	 WHERE I_PRODUTO = P_PRODUTO AND
+	       I_VENDA IN (SELECT VENDAS.I_VENDA 
+	       	             FROM VENDAS
+	       	            WHERE EXTRACT(MONTH FROM DATA_VENDA) = 9);
+	UPDATE VENDAS
+	   SET VALOR_VENDA = (SELECT SUM(VALOR_VENDA * QUANTIDADE)
+	   	                    FROM ITENS_VENDAS
+	   	                   WHERE ITENS_VENDAS.I_VENDA = 
+	   	                         VENDAS.I_VENDA),
+     	   DESCONTO = ((SELECT SUM(VALOR_VENDA * QUANTIDADE)
+	   	                    FROM ITENS_VENDAS
+	   	                   WHERE ITENS_VENDAS.I_VENDA = 
+	   	                         VENDAS.I_VENDA) - VALOR_FINAL)
+		 WHERE EXTRACT(MONTH FROM DATA_VENDA) = 9;
+END $$;
+
+
+---------------------------------------------------
+
+DO $$
+BEGIN
+	CALL P_PROC_AUMENTO_VAR(1, 5);
+END $$;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAÇÃO DA FUNÇÃO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE FUNCTION 
+  FUNC_SIMPLES RETURN VARCHAR2 IS
+BEGIN
+	RETURN 'Função Simples';
+END FUNC_SIMPLES;
+
+-----------------------------------------------------------
+CRIAÇÃO DA FUNÇÃO
+-----------------------------------------------------------
+SELECT FUNC_SIMPLES FROM dual;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EXERCÍCIO 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE PROCEDURE PROC_VENDAS IS
+	CURSOR CUR_CLIENTE IS 
+	       SELECT CLIENTES.I_CLIENTE, NOME, I_VENDA, VALOR_FINAL 
+		     FROM CLIENTES JOIN VENDAS
+			      ON(CLIENTES.I_CLIENTE = VENDAS.I_CLIENTE);
+	VCODIGO INTEGER;
+	VNOME VARCHAR(50);
+	VVENDA INTEGER;
+	VVALOR NUMERIC(12,2);
+	VCOD_ANT INTEGER;
+	VMEDIA NUMERIC(12,2);
+BEGIN
+	SELECT AVG(VALOR_FINAL) INTO VMEDIA
+	  FROM VENDAS;
+	DBMS_OUTPUT.PUT_LINE('VALOR MEDIO DAS VENDAS: '||VMEDIA);
+	OPEN CUR_CLIENTE;
+	LOOP
+		FETCH CUR_CLIENTE INTO VCODIGO, VNOME, VVENDA, VVALOR;
+		IF CUR_CLIENTE%NOTFOUND THEN
+			EXIT;
+		END IF;	
+		IF VVALOR < VMEDIA THEN
+			DBMS_OUTPUT.PUT_LINE('CLIENTE: '||VCODIGO||'-'||VNOME||' VENDA: '||VVENDA||' - VALOR: '||VVALOR);
+		END IF;
+	END LOOP;
+	IF CUR_CLIENTE%ISOPEN THEN
+		CLOSE CUR_CLIENTE;
+	END IF;
+	DBMS_OUTPUT.PUT_LINE('FIM DA EXECUÇÃO');
+END PROC_VENDAS;
+
+------------------------------------------
+CHAMADA DA PROCEDURE
+------------------------------------------
+
+BEGIN
+	PROC_VENDAS;
+END;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EXERCÍCIO 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE PROCEDURE PROC_REAJUSTE(P_PERCENT IN NUMERIC) IS
+	CURSOR CUR_VENDA IS 
+		SELECT I_VENDA
+		  FROM VENDAS
+		 WHERE EXTRACT(MONTH FROM DATA_VENDA) = 9;
+			   
+	CODVENDA INTEGER := 0;
+	
+BEGIN
+	
+    UPDATE PRODUTOS
+       SET VALOR = VALOR * ((P_PERCENT/100) + 1);
+
+
+	OPEN CUR_VENDA;
+	LOOP
+		FETCH CUR_VENDA INTO CODVENDA;
+		
+		IF CUR_VENDA%NOTFOUND  THEN
+			EXIT;
+		END IF;
+
+
+		UPDATE VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * ((P_PERCENT/100) + 1),
+		   DESCONTO = (VALOR_VENDA * ((P_PERCENT/100) + 1)) - VALOR_FINAL
+		 WHERE I_VENDA = CODVENDA;
+		 
+		UPDATE ITENS_VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * ((P_PERCENT/100) + 1)
+		 WHERE I_VENDA = CODVENDA;
+		
+	END LOOP;
+		
+	IF CUR_VENDA%ISOPEN THEN 
+		CLOSE CUR_VENDA;
+	END IF;
+	
+	COMMIT;
+
+END;
+
+BEGIN
+	PROC_REAJUSTE(5);
+END;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EXERCÍCIO 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CREATE OR REPLACE FUNCTION FUNC_VENDAS 
+RETURN INTEGER
+IS
+	CURSOR CUR_CLIENTE IS 
+	       SELECT CLIENTES.I_CLIENTE, NOME, I_VENDA, VALOR_FINAL 
+		     FROM CLIENTES JOIN VENDAS
+			      ON(CLIENTES.I_CLIENTE = VENDAS.I_CLIENTE);
+	VCODIGO INTEGER;
+	VNOME VARCHAR(50);
+	VVENDA INTEGER;
+	VVALOR NUMERIC(12,2);
+	VCOD_ANT INTEGER;
+	VMEDIA NUMERIC(12,2);
+	CONTADOR INTEGER :=0;
+BEGIN
+	SELECT AVG(VALOR_FINAL) INTO VMEDIA
+	  FROM VENDAS;
+	DBMS_OUTPUT.PUT_LINE('VALOR MEDIO DAS VENDAS: '||VMEDIA);
+	OPEN CUR_CLIENTE;
+	LOOP
+		FETCH CUR_CLIENTE INTO VCODIGO, VNOME, VVENDA, VVALOR;
+		IF CUR_CLIENTE%NOTFOUND THEN
+			EXIT;
+		END IF;	
+		IF VVALOR < VMEDIA THEN
+			DBMS_OUTPUT.PUT_LINE('CLIENTE: '||VCODIGO||'-'||VNOME||' VENDA: '||VVENDA||' - VALOR: '||VVALOR);
+			CONTADOR := CONTADOR + 1;
+		END IF;
+	END LOOP;
+	IF CUR_CLIENTE%ISOPEN THEN
+		CLOSE CUR_CLIENTE;
+	END IF;
+	DBMS_OUTPUT.PUT_LINE('FIM DA EXECUÇÃO');
+	RETURN CONTADOR;
+END FUNC_VENDAS;
+
+------------------------------------------
+CHAMADA DA FUNÇÃO
+------------------------------------------
+
+
+SELECT FUNC_VENDAS FROM DUAL;
+
+------------------------------------
+
+DECLARE 
+  CONTAGEM INTEGER;
+BEGIN 
+    CONTAGEM := FUNC_VENDAS ;
+    DBMS_OUTPUT.PUT_LINE('QUANTIDADE DE LINHAS APRESENTADAS: '|| CONTAGEM);
+END;
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EXERCÍCIO 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+CREATE OR REPLACE FUNCTION FUNC_REAJUSTE(P_PERCENT IN NUMERIC) 
+RETURN INTEGER
+IS
+	CURSOR CUR_VENDA IS 
+		SELECT I_VENDA
+		  FROM VENDAS
+		 WHERE EXTRACT(MONTH FROM DATA_VENDA) = 9;
+			   
+	CODVENDA INTEGER := 0;
+	CONTADOR INTEGER := 0;
+	
+BEGIN
+	
+    UPDATE PRODUTOS
+       SET VALOR = VALOR * ((P_PERCENT/100) + 1);
+	
+	SELECT COUNT(1) INTO CONTADOR FROM PRODUTOS;
+
+	OPEN CUR_VENDA;
+	LOOP
+		FETCH CUR_VENDA INTO CODVENDA;
+		
+		IF CUR_VENDA%NOTFOUND  THEN
+			EXIT;
+		END IF;
+
+		CONTADOR := CONTADOR + 1;
+
+		UPDATE VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * ((P_PERCENT/100) + 1),
+		   DESCONTO = (VALOR_VENDA * ((P_PERCENT/100) + 1)) - VALOR_FINAL
+		 WHERE I_VENDA = CODVENDA;
+		 
+		UPDATE ITENS_VENDAS
+		   SET VALOR_VENDA = VALOR_VENDA * ((P_PERCENT/100) + 1)
+		 WHERE I_VENDA = CODVENDA;
+		
+	END LOOP;
+		
+	IF CUR_VENDA%ISOPEN THEN 
+		CLOSE CUR_VENDA;
+	END IF;
+	
+	RETURN CONTADOR;
+
+END FUNC_REAJUSTE;
+
+
+------------------------------------------
+CHAMADA DA FUNÇÃO
+------------------------------------------
+DECLARE 
+  CONTAGEM INTEGER;
+BEGIN 
+    CONTAGEM := FUNC_REAJUSTE(5);
+    IF CONTAGEM  > 0 THEN 
+		DBMS_OUTPUT.PUT_LINE(CONTAGEM || ' REGISTROS ALTERADOS!');
+		COMMIT;
+	END IF;
+END;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EXERCÍCIO 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAR UMA FUNÇÃO PARA ENCONTRAR O VALOR MÉDIO DAS VENDAS 
+REALIZADAS POR MÊS EM CADA LOJA.
+-- DEVERÁ SER CRIADO UM BLOCO DE PROGRAMAÇÃO PARA APRESENTAR 
+-- A LOJA, O MÊS E O VALOR MÉDIO DAS VENDAS PARA OS RESPECTIVOS 
+-- MESES E LOJAS.
+------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION FUNC_MEDIA_LOJA_MES(P_LOJA IN INTEGER, P_MES IN INTEGER, P_ANO IN INTEGER) 
+RETURN NUMERIC 
+IS
+	V_MEDIA NUMERIC(12,2);
+BEGIN
+	SELECT AVG(VALOR_FINAL) INTO V_MEDIA
+	  FROM VENDAS
+	 WHERE VENDAS.I_LOJA = P_LOJA AND
+		   EXTRACT(MONTH FROM VENDAS.DATA_VENDA) = P_MES AND EXTRACT(YEAR FROM VENDAS.DATA_VENDA) = P_ANO;
+	RETURN V_MEDIA;
+END FUNC_MEDIA_LOJA_MES;
+
+----------------------------------------------------------
+CHAMADA DA FUNÇÃO
+----------------------------------------------------------
+SELECT DISTINCT VENDAS.I_LOJA, 
+       EXTRACT(YEAR FROM VENDAS.DATA_VENDA),
+	   EXTRACT(MONTH FROM VENDAS.DATA_VENDA),
+	   FUNC_MEDIA_LOJA_MES(VENDAS.I_LOJA, EXTRACT(MONTH FROM VENDAS.DATA_VENDA), EXTRACT(YEAR FROM VENDAS.DATA_VENDA))
+  FROM VENDAS
+ORDER BY 1, 2, 3
+
+----------------------------------------------------
+DECLARE 
+	CURSOR CUR_VENDAS IS
+	       SELECT DISTINCT VENDAS.I_LOJA,
+				  EXTRACT(YEAR FROM VENDAS.DATA_VENDA),
+				  EXTRACT(MONTH FROM VENDAS.DATA_VENDA)
+			 FROM VENDAS
+		    ORDER BY 1, 2, 3;
+		
+	V_LOJA INTEGER;
+	V_MES INTEGER;
+	V_ANO INTEGER;
+	V_MEDIA NUMERIC(12,2);
+BEGIN
+	OPEN CUR_VENDAS;
+	LOOP
+		FETCH CUR_VENDAS INTO V_LOJA, V_ANO, V_MES;
+		IF CUR_VENDAS%NOTFOUND  THEN
+			EXIT;
+		END IF;	
+		
+		V_MEDIA := FUNC_MEDIA_LOJA_MES(V_LOJA, V_MES, V_ANO);
+		
+		DBMS_OUTPUT.PUT_LINE('LOJA: '|| V_LOJA|| '  - ANO: '|| V_ANO || '  - MÊS: '|| V_MES|| ' - VALOR MÉDIO: '||V_MEDIA);
+		
+
+	END LOOP;
+		
+	IF CUR_VENDAS%ISOPEN THEN 
+		CLOSE CUR_VENDAS;
+	END IF;
+
+END;
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAR UMA FUNÇÃO PARA VERIFICAR SE O VALOR DO NÚMERO DE  ITENS DE 
+UMA DETERMINADA VENDA ESTÁ CORRETO EM RELAÇÃO AO VALOR DE VENDA DESTA VENDA.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CREATE OR REPLACE FUNCTION DBF_VERIFICA_VALOR_VENDA(P_COD_VENDA IN INTEGER) RETURN BOOLEAN IS
+	V_VALOR_VENDA DECIMAL(12,2) := 0;
+	V_VALOR_ITENS DECIMAL(12,2) := 0;
+	V_RETORNO BOOLEAN := FALSE;
+BEGIN
+	SELECT VENDAS.VALOR_VENDA INTO V_VALOR_VENDA
+	  FROM VENDAS
+	 WHERE VENDAS.I_VENDA = P_COD_VENDA;
+	 
+	SELECT SUM(ITENS_VENDAS.QUANTIDADE * ITENS_VENDAS.VALOR_VENDA) INTO V_VALOR_ITENS
+	  FROM ITENS_VENDAS
+	 WHERE ITENS_VENDAS.I_VENDA = P_COD_VENDA;
+	
+	IF V_VALOR_VENDA = V_VALOR_ITENS THEN
+		V_RETORNO := TRUE;
+	END IF;
+	
+	RETURN V_RETORNO;
+END DBF_VERIFICA_VALOR_VENDA;
+
+
+
+BEGIN
+	IF DBF_VERIFICA_VALOR_VENDA(1) THEN
+		DBMS_OUTPUT.PUT_LINE('VALOR DE VENDA E DE ITENS DA VENDA SÃO IGUAIS!');
+	ELSE
+		DBMS_OUTPUT.PUT_LINE('VALOR DE VENDA E DE ITENS DA VENDA SÃO DIFERENTES!');
+	END IF;
+END;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAR UM CONJUNTO DE FUNÇÕES PARA SER UTILIZADO NA VENDA PARA QUE 
+A PARTIR DE UM PERCENTUAL DE DESCONTO INFORMADO CADA FUNÇÃO CALCULE:
+- VALOR DO DESCONTO;
+- VALOR FINAL DA VENDA;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+CREATE OR REPLACE FUNCTION DBF_DESCONTO(P_COD_VENDA IN INTEGER, P_PERC_DESCONTO NUMERIC) RETURN NUMERIC IS
+	V_DESCONTO NUMERIC(12,2) := 0;
+BEGIN
+	SELECT (VENDAS.VALOR_VENDA * P_PERC_DESCONTO)/ 100
+	  INTO V_DESCONTO
+	  FROM VENDAS
+	 WHERE VENDAS.I_VENDA = P_COD_VENDA;
+	 
+	RETURN V_DESCONTO;
+END DBF_DESCONTO;
+
+CREATE OR REPLACE FUNCTION DBF_VALOR_FINAL(P_COD_VENDA IN INTEGER, P_PERC_DESCONTO NUMERIC) RETURN NUMERIC IS
+	V_VALOR_FINAL NUMERIC(12,2) := 0;
+BEGIN
+	SELECT (VENDAS.VALOR_VENDA - DBF_DESCONTO(P_COD_VENDA, P_PERC_DESCONTO)) INTO V_VALOR_FINAL
+	  FROM VENDAS
+	 WHERE VENDAS.I_VENDA = P_COD_VENDA;
+	
+	RETURN V_VALOR_FINAL;
+END DBF_VALOR_FINAL;
+
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('VALOR DO DESCONTO = '||DBF_DESCONTO(1,10));
+	DBMS_OUTPUT.PUT_LINE('VALOR FINAL DA VENDA = '||DBF_VALOR_FINAL(1,10));
+END;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAR UMA FUNÇÃO PARA QUE A PARTIR DE UM VALOR DE DESCONTO SEJA 
+CALCULO O PERCENTUAL DE DESCONTO QUE ESTE REPRESENTA SOBRE A VENDA.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CRIAR UM FUNÇÃO QUE FAÇA A VERIFICAÇÃO DO CPF DO CLIENTE
+http://www.geradorcpf.com/algoritmo_do_cpf.htm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
