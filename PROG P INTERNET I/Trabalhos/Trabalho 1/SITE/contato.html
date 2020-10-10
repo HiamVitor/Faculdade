@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Café Fontainebleau</title>
+        <link href="CSS/layout.css" rel="stylesheet" type="text/css" />
+        <link href="CSS/tipografia.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <header></header>
+        <nav id="menu_desktop">
+            <ul>
+                <li><a href="index.html">Home </a></li>
+                <li><a href="info.html">Info</a></li>
+                <li><a href="special_events.html">Special Events</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="contato.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div id="principal">
+            <article>
+                <h3>Nós entramos em contatoto com você!</h3>
+                <form
+                    action="mailto:contatoFontainebleau@gmail.com"
+                    method="GET"
+                    enctype="application/x-www-form-urlencoded"
+                >
+                    <fieldset>
+                        <label class="alignLabel">Nome:</label>
+                        <input type="text" name="nome" maxlength="100" class="formatInputText" /><br />
+                        <label class="alignLabel">E-mail:</label>
+                        <input type="email" name="emial" class="formatInputText" /><br />
+                        <label class="alignLabel">Telefone:</label>
+                        <input type="number" name="telefone" min="1" max="11" class="formatInputNumber" />
+                        <label class="alignLabel">Celular:</label>
+                        <input type="number" name="celular" min="1" max="11" class="formatInputNumber" /><br />
+
+                        <label>Sexo:</label>
+                        <input type="radio" name="sexo" />
+                        <label>Masculino</label>
+                        <input type="radio" name="sexo" />
+                        <label>Fêminino</label>
+                        <input type="radio" name="sexo" />
+                        <label>Outros</label>
+                    </fieldset>
+                    <fieldset>
+                        <label class="alignLabel">Assunto:</label>
+                        <input type="text" name="assunto" class="formatInputText" /><br />
+                        <label class="alignLabel">Forma de Contato:</label>
+                        <input type="radio" name="formaContato" />
+                        <label>E-mail</label>
+                        <input type="radio" name="formaContato" />
+                        <label>Telefone</label><br />
+
+                        <label class="alignLabel">Mensagem:</label><br />
+                        <textarea rows="2" cols="50" class="formatArea"></textarea><br />
+
+                        <button type="reset">Clear</button>
+                        <button type="submit">Send</button>
+                    </fieldset>
+                </form>
+
+                <h3>Venha nos visitar</h3>
+                <ul>
+                    <li>ENDEREÇO: Cafe Fontainebleau , Rua Thouin, 23 Paris-FR</li>
+                    <li>TELEFONE: (415) 555-1234</li>
+                    <li>
+                        HORÁRIO: O Café Fontainebleauestá aberto sete dias por semana para o jantar e de segunda a sexta
+                        para o almoço.
+                    </li>
+                    <li>ALMOÇO: de segunda a sexta, das 11h30 às 14h</li>
+                    <li>JANTAR: de domingo a quinta-feira, das 17h30 às 22h00 - sexta e sábado, das 17h30 às 23h00</li>
+                    <li>CARTÕES DE CRÉDITO ACEITOS: Visa, Mastercard, American Express</li>
+                </ul>
+            </article>
+
+            <aside>
+                <section>
+                    <h6>Mapa</h6>
+                    <img src="imagens/mapa_como_chegar.gif" alt="Imagem do Mapa" />
+                </section>
+
+                <section>
+                    <h6>Fotos</h6>
+                    <img src="imagens/fotos.jpg" width="275" height="165" alt="Fotos" />
+                </section>
+
+                <section>
+                    <h6>Vinho</h6>
+                    <img src="imagens/vinhos.jpg" width="275" height="163" alt="Fotos de vinhos" />
+                </section>
+            </aside>
+        </div>
+        <footer></footer>
+    </body>
+</html>
