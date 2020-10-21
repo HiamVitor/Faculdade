@@ -1,4 +1,3 @@
-
 package View;
 
 import Controller.daoCliente;
@@ -12,53 +11,55 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class dialogProfessor extends javax.swing.JDialog {
+public class dialogCliente extends javax.swing.JDialog {
 
     daoCliente dao = new daoCliente();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            
-    private void loadEnumSexo(){
+
+    private void loadEnumSexo() {
         DefaultComboBoxModel cbm = new DefaultComboBoxModel(Sexos.values());
         comboSexo.setModel(cbm);
     }
-    
-    private void loadListCliente() throws SQLException{
+
+    private void loadListCliente() throws SQLException {
         DefaultListModel lm = new DefaultListModel();
         lm.addAll(dao.getList());
         listDados.setModel(lm);
     }
+
     //limpar os componentes
-    private void clearComponents(){
+    private void clearComponents() {
         textId.setText("");
         textNome.setText("");
         textNascimento.setText("");
         textCpf.setText("");
         comboSexo.setSelectedIndex(0);
-        comboTitulacao.setSelectedIndex(0);
-        comboInstituicao.setSelectedIndex(0);
         textNome.requestFocus();
     }
+
     //criar um objeto com os dados de tela
-    private Cliente createObject(){
+    private Cliente createObject() {
         return new Cliente(
-                textId.getText().isEmpty()?0:Integer.parseInt(textId.getText()), 
+                textId.getText().isEmpty() ? 0 : Integer.parseInt(textId.getText()),
                 textNome.getText(),
-                LocalDate.parse(textNascimento.getText(), formato), 
-                textCpf.getText(), 
-                (Sexos)comboSexo.getSelectedItem(),  
-                (Cidade)comboInstituicao.getSelectedItem()
+                LocalDate.parse(textNascimento.getText(), formato),
+                textCpf.getText(),
+                (Sexos) comboSexo.getSelectedItem(),
+                (Cidade) comboCidade.getSelectedItem()
         );
     }
+
     //popular os componentes
-    private void populateComponents(Cliente professor){
-        textId.setText(professor.getId()+""); 
+    private void populateComponents(Cliente professor) {
+        textId.setText(professor.getId() + "");
         textNome.setText(professor.getNome());
         textNascimento.setText(professor.getNascimento().format(formato));
-        textCpf.setText(professor.getCpf()); 
+        textCpf.setText(professor.getCpf());
         comboSexo.setSelectedItem(professor.getSexo());
     }
+
     //
-    public dialogProfessor(java.awt.Frame parent, boolean modal) {
+    public dialogCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -86,10 +87,8 @@ public class dialogProfessor extends javax.swing.JDialog {
         textNascimento = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         textCpf = new javax.swing.JFormattedTextField();
-        jLabel6 = new javax.swing.JLabel();
-        comboTitulacao = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        comboInstituicao = new javax.swing.JComboBox<>();
+        comboCidade = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         listDados = new javax.swing.JList();
 
@@ -149,13 +148,9 @@ public class dialogProfessor extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel6.setText("Titulação");
+        jLabel7.setText("Cidade");
 
-        comboTitulacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel7.setText("Instituição");
-
-        comboInstituicao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,36 +164,35 @@ public class dialogProfessor extends javax.swing.JDialog {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(textNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textNome)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
                                 .addComponent(buttonNew, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buttonRemove))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(130, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,13 +217,9 @@ public class dialogProfessor extends javax.swing.JDialog {
                     .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(comboTitulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(comboInstituicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNew)
                     .addComponent(buttonSave)
@@ -260,7 +250,7 @@ public class dialogProfessor extends javax.swing.JDialog {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -283,59 +273,59 @@ public class dialogProfessor extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        if (textNome.getText().trim().isEmpty()){
+        if (textNome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome Obrigatório");
             textNome.requestFocus();
             return;
         }
-        try{
-            if(textId.getText().isEmpty()){ //adicionar registro
+        try {
+            if (textId.getText().isEmpty()) { //adicionar registro
                 dao.create(this.createObject());
-            }else{ //update de registro
+            } else { //update de registro
                 dao.update(this.createObject());
             }
             //limpar dados
             this.clearComponents();
             //refresh na lista
             this.loadListCliente();
-        }catch(SQLException ex){
-            System.out.println("ERRO:"+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO:" + ex.getMessage());
         }
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveActionPerformed
         // TODO add your handling code here:
-        if (listDados.getSelectedIndex() == -1){
+        if (listDados.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null, "Seelecione o registro a remover");
             return;
         }
-        if (JOptionPane.showConfirmDialog(null, "Confirma a remoção?")!=0){
+        if (JOptionPane.showConfirmDialog(null, "Confirma a remoção?") != 0) {
             return;
         }
-        try{
-            dao.delete((Cliente)listDados.getSelectedValue());
+        try {
+            dao.delete((Cliente) listDados.getSelectedValue());
             this.clearComponents();
             this.loadListCliente();
-        }catch(SQLException ex){
-            System.out.println("ERRO:"+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO:" + ex.getMessage());
         }
     }//GEN-LAST:event_buttonRemoveActionPerformed
 
     private void listDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listDadosMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2){
-            Cliente cliente = (Cliente)listDados.getSelectedValue();
+        if (evt.getClickCount() == 2) {
+            Cliente cliente = (Cliente) listDados.getSelectedValue();
             this.populateComponents(cliente);
         }
     }//GEN-LAST:event_listDadosMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try{
+        try {
             this.loadEnumSexo();
             this.loadListCliente();
-        }catch(SQLException ex){
-            System.out.println("ERRO:"+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO:" + ex.getMessage());
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -356,20 +346,21 @@ public class dialogProfessor extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dialogProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dialogProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dialogProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dialogProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogProfessor dialog = new dialogProfessor(new javax.swing.JFrame(), true);
+                dialogCliente dialog = new dialogCliente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -385,15 +376,13 @@ public class dialogProfessor extends javax.swing.JDialog {
     private javax.swing.JButton buttonNew;
     private javax.swing.JButton buttonRemove;
     private javax.swing.JButton buttonSave;
-    private javax.swing.JComboBox<String> comboInstituicao;
+    private javax.swing.JComboBox<String> comboCidade;
     private javax.swing.JComboBox<String> comboSexo;
-    private javax.swing.JComboBox<String> comboTitulacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
