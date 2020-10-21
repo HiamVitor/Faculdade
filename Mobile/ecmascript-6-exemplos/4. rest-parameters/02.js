@@ -1,5 +1,7 @@
 function somar() {
-    // console.log(arguments);
+    console.log(arguments);
+    console.log(typeof(arguments));
+    
     var soma = 0;
     for (var i = 0, l = arguments.length; i < l; i++) {
         soma += arguments[i];

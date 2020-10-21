@@ -1,16 +1,18 @@
-var p1 = {
+// Objeto literal
+var pessoa1 = {
     nome: "João",
     imprimirNome: function() {
         console.log(this.nome);
     }
 };
 
-var p2 = new Object();
-p2.nome = 'Maria';
-p2.imprimirNome = function() {
+var pessoa2 = new Object();
+pessoa2.nome = 'Maria';
+pessoa2.idade = 30;
+pessoa2.rg = 1234567;
+pessoa2.imprimirNome = function() {
     console.log(this.nome);
 };
-p2.idade = 30;
 
-p1.imprimirNome();
-p2.imprimirNome();
+pessoa1.imprimirNome();
+pessoa2.imprimirNome();

@@ -1,16 +1,18 @@
-const p1 = {
+// Objeto literal
+const pessoa1 = {
     nome: "João",
     imprimirNome() {
         console.log(this.nome);
     }
 };
 
-const p2 = new Object();
-p2.nome = 'Maria';
-p2.imprimirNome = () => {
+const pessoa2 = new Object();
+pessoa2.nome = 'Maria';
+pessoa2.idade = 30;
+pessoa2.rg = 1234567;
+pessoa2.imprimirNome = () => {
     console.log(this.nome);
 };
-p2.idade = 30;
 
-p1.imprimirNome();
-p2.imprimirNome();
+pessoa1.imprimirNome();
+pessoa2.imprimirNome();

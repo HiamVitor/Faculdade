@@ -10,7 +10,10 @@ function helloWorld2() {
 // ES 6
 /* 
     Arrows functions 
-    function() {} ----------> () => { ... } 
+
+    function() {} 
+    
+    () => { } 
 */
 const helloWorld3 = () => {
     return "Hello World!";
