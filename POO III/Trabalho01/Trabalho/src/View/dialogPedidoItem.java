@@ -78,7 +78,7 @@ public class dialogPedidoItem extends javax.swing.JDialog {
 
         jLabel1.setText("Código");
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Descricao");
 
         jLabel3.setText("Preço");
 

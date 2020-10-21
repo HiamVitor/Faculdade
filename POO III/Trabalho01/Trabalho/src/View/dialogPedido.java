@@ -3,8 +3,12 @@ package View;
 
 import Controller.daoCliente;
 import Controller.daoPedido;
+import Controller.daoPedidoItem;
 import Controller.daoVendedor;
+import Model.Cliente;
 import Model.Pedido;
+import Model.PedidoItem;
+import Model.Vendedor;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -31,12 +35,17 @@ public class dialogPedido extends javax.swing.JDialog {
         new DefaultComboBoxModel(new daoVendedor().getList().toArray());
         comboCliente.setModel(cbm);
     }
+    
+    private void loadComboItens() throws SQLException{
+        DefaultComboBoxModel cbm = 
+        new DefaultComboBoxModel(new daoPedidoItem().getList().toArray());
+        comboItens.setModel(cbm);
+    }
     //limpar os componentes
     private void clearComponents(){
         textId.setText("");
-        textNome.setText("");
         textPreco.setText("");
-        textNome.requestFocus();
+        comboItens.setSelectedIndex(0);
         comboCliente.setSelectedIndex(0);
         comboVendedor.setSelectedIndex(0);
     }
@@ -44,14 +53,18 @@ public class dialogPedido extends javax.swing.JDialog {
     private Pedido createObject(){
         return new Pedido(
                 textId.getText().isEmpty()?0:Integer.parseInt(textId.getText()),                 
-                textNome.getText(), 
-                textPreco.getText().isEmpty() ? 0 : Float.parseFloat(textId.getText()));
+                textPreco.getText().isEmpty() ? 0 : Float.parseFloat(textId.getText()),
+                (Vendedor)comboVendedor.getSelectedItem(),
+                (PedidoItem)comboItens.getSelectedItem(),
+                (Cliente)comboCliente.getSelectedItem());
     }
     //popular os componentes
     private void populateComponents(Pedido pedido){
         textId.setText(pedido.getId()+"");
-        textNome.setText(pedido.);
-        textPreco.setText(pedido.getPreco()+"");
+        textPreco.setText(pedido.getPrecoTotal()+"");
+        comboVendedor.setSelectedItem(pedido.getVendedor());
+        comboCliente.setSelectedItem(pedido.getCliente());
+        comboItens.setSelectedItem(pedido.getPedidoItem());
     }
     //
     public dialogPedido(java.awt.Frame parent, boolean modal) {
@@ -72,10 +85,8 @@ public class dialogPedido extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         textId = new javax.swing.JTextField();
-        textNome = new javax.swing.JTextField();
         buttonNew = new javax.swing.JButton();
         buttonSave = new javax.swing.JButton();
         buttonRemove = new javax.swing.JButton();
@@ -84,6 +95,8 @@ public class dialogPedido extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         comboVendedor = new javax.swing.JComboBox<>();
+        comboItens = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listDados = new javax.swing.JList();
 
@@ -97,8 +110,6 @@ public class dialogPedido extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
         jLabel1.setText("Código");
-
-        jLabel2.setText("Nome");
 
         jLabel3.setText("Preço");
 
@@ -135,40 +146,39 @@ public class dialogPedido extends javax.swing.JDialog {
 
         comboVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        comboItens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel9.setText("Itens do pedido");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(buttonNew, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRemove)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(buttonNew, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRemove))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(comboVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 49, Short.MAX_VALUE))
+                            .addComponent(comboItens, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,10 +187,6 @@ public class dialogPedido extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -193,6 +199,10 @@ public class dialogPedido extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(comboVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(comboItens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNew)
@@ -257,11 +267,7 @@ public class dialogPedido extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        if (textNome.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nome Obrigatório");
-            textNome.requestFocus();
-            return;
-        }
+        
         try{
             if(textId.getText().isEmpty()){ //adicionar registro
                 dao.create(this.createObject());
@@ -351,17 +357,17 @@ public class dialogPedido extends javax.swing.JDialog {
     private javax.swing.JButton buttonRemove;
     private javax.swing.JButton buttonSave;
     private javax.swing.JComboBox<String> comboCliente;
+    private javax.swing.JComboBox<String> comboItens;
     private javax.swing.JComboBox<String> comboVendedor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listDados;
     private javax.swing.JTextField textId;
-    private javax.swing.JTextField textNome;
     private javax.swing.JTextField textPreco;
     // End of variables declaration//GEN-END:variables
 }
