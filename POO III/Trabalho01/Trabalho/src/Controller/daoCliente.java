@@ -10,10 +10,11 @@ import java.util.LinkedList;
 public class daoCliente extends dao {
 
     public int create(Cliente cliente) throws SQLException {
-        String SQL = "INSERT INTO clientees(nome, nascimento, cpf, sexo, id_cidade) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO clientees(nome,endereco, nascimento, cpf, sexo, id_cidade) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         return super.executeUpdate(SQL,
                 cliente.getNome(),
+                cliente.getEndereco(),
                 cliente.getNascimento(),
                 cliente.getCpf(),
                 cliente.getSexo().name(),
@@ -22,11 +23,12 @@ public class daoCliente extends dao {
     }
 
     public int update(Cliente cliente) throws SQLException {
-        String SQL = "UPDATE clientees SET nome=?, nascimento=?, "
+        String SQL = "UPDATE clientees SET nome=?, endereco=? ,nascimento=?, "
                 + "cpf=?, sexo=?, titulacao=?, id_cidade=? "
                 + "WHERE id=?";
         return super.executeUpdate(SQL,
                 cliente.getNome(),
+                cliente.getEndereco(),
                 cliente.getNascimento(),
                 cliente.getCpf(),
                 cliente.getSexo().name(),
@@ -71,6 +73,7 @@ public class daoCliente extends dao {
         return new Cliente(
                 rs.getInt("ID"),
                 rs.getString("NOME"),
+                rs.getString("ENDERECO"),
                 rs.getDate("NASCIMENTO").toLocalDate(),
                 rs.getString("CPF"),
                 Sexos.valueOf(rs.getString("SEXO")),

@@ -9,19 +9,19 @@ import java.util.LinkedList;
 public class daoPedido extends dao {
 
     public int create(Pedido pedido) throws SQLException {
-        String SQL = "INSERT INTO pedido( credito, semipresencial, id_pedidoItem, id_professor) VALUES ( ?, ?, ?, ?)";
+        String SQL = "INSERT INTO pedido( precoTotal, id_vendedor, id_pedidoItem, id_cliente) VALUES ( ?, ?, ?, ?)";
         return super.executeUpdate(SQL,
-                pedido.getCredito(),
-                pedido.isSemiPresencial(),
+                pedido.getPrecoTotal(),
+                pedido.getVendedor().getId(),
                 pedido.getPedidoItem().getId(),
                 pedido.getCliente().getId());
     }
 
     public int update(Pedido pedido) throws SQLException {
-        String SQL = "UPDATE pedido SET , credito=?, semipresencial=?, id_pedidoItem=?, id_professor=? WHERE id=?";
+        String SQL = "UPDATE pedido SET , precoTotal=?, getVendedor=?, id_pedidoItem=?, id_professor=? WHERE id=?";
         return super.executeUpdate(SQL,
-                pedido.getCredito(),
-                pedido.isSemiPresencial(),
+                pedido.getPrecoTotal(),
+                pedido.getVendedor().getId(),
                 pedido.getPedidoItem().getId(),
                 pedido.getCliente().getId(),
                 pedido.getId()
@@ -63,10 +63,10 @@ public class daoPedido extends dao {
     private Pedido createObject(ResultSet rs) throws SQLException {
         return new Pedido(
                 rs.getInt("ID"),
-                rs.getInt("CREDITO"),
-                rs.getBoolean("SEMIPRESENCIAL"),
+                rs.getDouble("PRECOTOTAL"),
+                new daoVendedor().retrieve(rs.getInt("ID_VENDEDOR")),
                 new daoPedidoItem().retrieve(rs.getInt("id_pedidoItem")),
-                new daoCliente().retrieve(rs.getInt("ID_PROFESSOR"))
+                new daoCliente().retrieve(rs.getInt("ID_CLIENTE"))
         );
     }
 }

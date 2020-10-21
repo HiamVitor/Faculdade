@@ -3,8 +3,8 @@ package Model;
 public class Pedido implements java.io.Serializable {
 
     private int id;
-    private int credito;
-    private boolean semiPresencial;
+    private double precoTotal;
+    private Vendedor vendedor;
     private PedidoItem pedidoItem;
     private Cliente cliente;
 
@@ -13,10 +13,10 @@ public class Pedido implements java.io.Serializable {
 
     }
 
-    public Pedido(int id, int credito, boolean semiPresencial, PedidoItem pedidoItem, Cliente cliente) {
+    public Pedido(int id, double precoTotal, Vendedor vendedor, PedidoItem pedidoItem, Cliente cliente) {
         this.setId(id);
-        this.setCredito(credito);
-        this.setSemiPresencial(semiPresencial);
+        this.setPrecoTotal(precoTotal);
+        this.setVendedor(vendedor);
         this.setPedidoItem(pedidoItem);
         this.setCliente(cliente);
     }
@@ -26,12 +26,12 @@ public class Pedido implements java.io.Serializable {
         this.id = id;
     }
 
-    public void setCredito(int credito) {
-        this.credito = (credito != 2) && (credito != 4) ? 2 : credito;
+    public void setPrecoTotal(double precoTotal) {
+        this.precoTotal = precoTotal < 0 ? 0.1 : precoTotal;
     }
 
-    public void setSemiPresencial(boolean semiPresencial) {
-        this.semiPresencial = semiPresencial;
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
     }
 
     public void setPedidoItem(PedidoItem pedidoItem) {
@@ -47,12 +47,12 @@ public class Pedido implements java.io.Serializable {
         return this.id;
     }
 
-    public int getCredito() {
-        return this.credito;
+    public double getPrecoTotal() {
+        return this.precoTotal;
     }
 
-    public boolean isSemiPresencial() {
-        return this.semiPresencial;
+    public Vendedor getVendedor() {
+        return this.vendedor;
     }
 
     public PedidoItem getPedidoItem() {

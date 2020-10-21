@@ -3,7 +3,7 @@ package Model;
 public class PedidoItem implements java.io.Serializable {
 
     private int id;
-    private String nome;
+    private String descricao;
     private float preco;
 
     //
@@ -11,9 +11,9 @@ public class PedidoItem implements java.io.Serializable {
 
     }
 
-    public PedidoItem(int id, String nome, float preco) {
+    public PedidoItem(int id, String descricao, float preco) {
         this.setId(id);
-        this.setNome(nome);
+        this.setDescricao(descricao);
         this.setPreco(preco);
     }
 
@@ -22,8 +22,8 @@ public class PedidoItem implements java.io.Serializable {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome.trim().isEmpty() ? "NOME PADRÃO" : nome.toUpperCase();
+    public void setDescricao(String descricao) {
+        this.descricao = descricao.trim().isEmpty() ? "NOME PADRÃO" : descricao.toUpperCase();
     }
 
     public void setPreco(float preco) {
@@ -35,8 +35,8 @@ public class PedidoItem implements java.io.Serializable {
         return this.id;
     }
 
-    public String getNome() {
-        return this.nome;
+    public String getDescricao() {
+        return this.descricao;
     }
 
     public float getPreco() {
@@ -46,7 +46,7 @@ public class PedidoItem implements java.io.Serializable {
     //
     @Override
     public String toString() {
-        return this.nome + " (" + this.preco + ")";
+        return this.descricao + " (" + this.preco + ")";
     }
 
     //

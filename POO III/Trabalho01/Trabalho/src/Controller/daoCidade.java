@@ -5,13 +5,6 @@ import enums.Estados;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-/*
-Executar instrução SQL
-1-SQL
-2-Comando a utilizar: Statement/PreparedStatement
-3-Parametros????
-4-Executar: execute, executeUpdate(int), executeQuery(select)
- */
 public class daoCidade extends dao {
 
     public int create(Cidade cidade) throws SQLException {

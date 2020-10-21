@@ -8,6 +8,7 @@ public class Cliente implements java.io.Serializable {
 
     private int id;
     private String nome;
+    private String endereco;
     private LocalDate nascimento;
     private String cpf;
     private Sexos sexo;
@@ -18,9 +19,10 @@ public class Cliente implements java.io.Serializable {
 
     }
 
-    public Cliente(int id, String nome, LocalDate nascimento, String cpf, Sexos sexo, Cidade cidade) {
+    public Cliente(int id, String nome, String endereco, LocalDate nascimento, String cpf, Sexos sexo, Cidade cidade) {
         this.setId(id);
         this.setNome(nome);
+        this.setEndereco(endereco);
         this.setNascimento(nascimento);
         this.setCpf(cpf);
         this.setSexo(sexo);
@@ -34,6 +36,10 @@ public class Cliente implements java.io.Serializable {
 
     public void setNome(String nome) {
         this.nome = nome.trim().isEmpty() ? "NOME PADRÃO" : nome.toUpperCase();
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco.trim().isEmpty() ? "ENDERECO PADRÃO" : endereco.toUpperCase();
     }
 
     public void setNascimento(LocalDate nascimento) {
@@ -59,6 +65,10 @@ public class Cliente implements java.io.Serializable {
 
     public String getNome() {
         return this.nome;
+    }
+
+    public String getEndereco() {
+        return this.endereco;
     }
 
     public LocalDate getNascimento() {
