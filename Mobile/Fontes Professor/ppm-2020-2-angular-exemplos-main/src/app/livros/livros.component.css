@@ -1,0 +1,21 @@
+li {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+ul > li {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ol > li {
+    font-weight: normal;  
+}
+
+span {
+    font-weight: normal;
+}

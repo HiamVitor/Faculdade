@@ -1,0 +1,9 @@
+Marca de Veículo, ok
+Modelo (vinculado a marca), ok
+acessórios, ok
+veículo (que pode ter relacionamento muito:muito com acessório), ok
+cliente (com cidade),  OK
+cidade, OK
+vendedor, OK
+venda, ok
+pagamentos ok

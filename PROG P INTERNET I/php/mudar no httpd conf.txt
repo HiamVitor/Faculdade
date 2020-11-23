@@ -1,0 +1,12 @@
+Mudar a porta 80 para outra porta, deve ser alterado esses dois itens dentro do arquivo httpd.conf
+
+Listen 80
+
+ServerName localhost:80
+
+Ex.:
+Listen 81
+
+ServerName localhost:81
+
+Digitar no navegador http://localhost:81/ para acessar o servidor

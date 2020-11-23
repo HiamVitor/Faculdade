@@ -1,0 +1,13 @@
+body {
+  background-color: darkslateblue;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  margin-top: 100px;
+}
+
+p {
+  color: lightslategray;
+  font-weight: bold;
+  font-size: 16px;
+}

@@ -1,0 +1,7 @@
+date.timezone=America/Sao_Paulo
+
+short_open_tag=Off
+<?php
+
+short_open_tag=On
+<?php ou <?

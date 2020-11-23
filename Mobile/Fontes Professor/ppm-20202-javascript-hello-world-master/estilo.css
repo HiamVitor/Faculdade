@@ -1,0 +1,16 @@
+body {
+  background-color: azure;
+}
+
+div {
+  margin-top: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+div, input, p {
+  text-align: center;
+}
