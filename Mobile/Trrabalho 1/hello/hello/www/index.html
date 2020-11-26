@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
+        <link rel="stylesheet" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                        <div>
+                            <label>Nome </label>
+                            <input type="text" name="nome" id="nome" />
+                        </div>
+                        <div>
+                            <label>Idade</label>
+                            <input type="number" name="idade" id="idade" />
+                        </div>
+                        <div>
+                            <label>CPF</label>
+                            <input type="number" name="cpf" id="cpf" />
+                        </div>
+                        <div>
+                            <label>Endereço</label>
+                            <input type="text" name="endereco" id="endereco" />
+                        </div>
+                        <div>
+                            <label>Telefone</label>
+                            <input type="number" name="telefone" id="telefone" />
+                        </div>
+                        <div class="form-action-buttons">
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <table class="lista" id="listaCadastro">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Idade</th>
+                                <th>CPF</th>
+                                <th>Endereço</th>
+                                <th>Telefone</th>
+                            </tr>
+                        </thead>
+                        <div>
+                            <tbody></tbody>
+                            <p class="botao" id="botoes"></p>
+                        </div>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <div class="page">
+            <p><img src="./img/logo.png" alt="image" id="photo" /></p>
+            <p><button id="btn">Take Picture</button></p>
+            <p id="msg" ></p>
+        </div>
+
+        <script src="js/index.js"></script>
+        <script src="js/camera.js"></script>
+    </body>
+</html>
