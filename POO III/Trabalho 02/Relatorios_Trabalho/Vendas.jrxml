@@ -7,18 +7,17 @@
 		<![CDATA[SELECT v.id,
 	   v.valor,	   
 	   v.id_cliente,
-	   v.id_modelo,
 	   v.id_pagamento,
 	   v.id_veiculo,
 	   v.id_vendedor,
 	   c.nome as nome_cliente,
-	   m.nome as nome_modelo,
 	   p.nome as forma_pagamento,
 	   vend.nome as nome_vendedor,
-	   vei.nome as nome_veiculo
+	   vei.nome as nome_veiculo,
+	   (SELECT sum(v.valor)
+		 FROM VENDAS v) as valor_total
 FROM vendas v
 JOIN clientes c on (c.id = v.id_cliente)
-JOIN modelos m on (m.id = v.id_modelo)
 JOIN pagamentos p on (p.id = v.id_pagamento)
 JOIN vendedores vend on (vend.id = v.id_vendedor)
 JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
@@ -36,11 +35,6 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 	<field name="id_cliente" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id_cliente"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_cliente"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
-	</field>
-	<field name="id_modelo" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_modelo"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_modelo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
 	</field>
 	<field name="id_pagamento" class="java.lang.Integer">
@@ -63,11 +57,6 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 		<property name="com.jaspersoft.studio.field.label" value="nome_cliente"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
 	</field>
-	<field name="nome_modelo" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nome_modelo"/>
-		<property name="com.jaspersoft.studio.field.label" value="nome_modelo"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="modelos"/>
-	</field>
 	<field name="forma_pagamento" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="forma_pagamento"/>
 		<property name="com.jaspersoft.studio.field.label" value="forma_pagamento"/>
@@ -83,6 +72,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 		<property name="com.jaspersoft.studio.field.label" value="nome_veiculo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="veiculos"/>
 	</field>
+	<field name="valor_total" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -149,26 +139,14 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<text><![CDATA[VALOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="37" y="0" width="100" height="10" uuid="f0d6ba9e-ac08-44ba-b075-51e83ac757b8">
+				<reportElement x="37" y="0" width="125" height="10" uuid="f0d6ba9e-ac08-44ba-b075-51e83ac757b8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb355036-f139-4706-8c02-ccb5ce80a329"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[CLIENTE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="253" y="0" width="50" height="10" uuid="55bc0870-4860-4744-8b2f-e9a769d1031c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d742319b-fee3-4bec-b154-e631a9525d30"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<text><![CDATA[MODELO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="313" y="0" width="100" height="10" uuid="4a5437e5-d2c4-4b9a-abc8-5e330c85e04e">
@@ -182,7 +160,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<text><![CDATA[PAGAMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="145" y="0" width="100" height="10" uuid="cafff991-1088-4a73-9e7d-c8d3eb10d0bc">
+				<reportElement x="170" y="0" width="125" height="10" uuid="cafff991-1088-4a73-9e7d-c8d3eb10d0bc">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4892bbe-7309-4133-8a55-54e8828016bb"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -204,7 +182,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<text><![CDATA[VEICULO]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="3" y="0" width="551" height="10" uuid="6b67b013-4312-4803-8aa7-c9d8c4c876e3">
+				<reportElement mode="Transparent" x="8" y="0" width="551" height="10" uuid="a189bde8-686c-4e7d-8a83-939cfd309677">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</rectangle>
@@ -235,7 +213,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="37" y="0" width="100" height="10" uuid="a28daf3d-a6ee-4b21-8860-311ddd6c1600">
+				<reportElement x="37" y="0" width="125" height="10" uuid="a28daf3d-a6ee-4b21-8860-311ddd6c1600">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb355036-f139-4706-8c02-ccb5ce80a329"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -244,17 +222,6 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_cliente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="253" y="0" width="50" height="10" uuid="171b375e-bb27-4e06-81e3-c7d8270f0f36">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d742319b-fee3-4bec-b154-e631a9525d30"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nome_modelo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="313" y="0" width="100" height="10" uuid="6016b022-710b-4337-a80d-5b502fd428b3">
@@ -268,7 +235,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<textFieldExpression><![CDATA[$F{forma_pagamento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="145" y="0" width="100" height="10" uuid="13f56627-2a5b-4ba3-b5a8-0df0ef2db5a0">
+				<reportElement x="170" y="0" width="125" height="10" uuid="13f56627-2a5b-4ba3-b5a8-0df0ef2db5a0">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4892bbe-7309-4133-8a55-54e8828016bb"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -294,7 +261,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 	<columnFooter>
 		<band height="62" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="52" width="501" height="10" uuid="8156f86c-ff19-4c5c-a5d7-b81c2937edfc">
+				<reportElement x="0" y="52" width="510" height="10" uuid="8156f86c-ff19-4c5c-a5d7-b81c2937edfc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -308,7 +275,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<textFieldExpression><![CDATA["Valor total das vendas:  "]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.###;(#,##0.###-)">
-				<reportElement x="501" y="52" width="53" height="10" uuid="6c493128-bb96-4126-bd0c-fc47fa1b696e">
+				<reportElement x="510" y="52" width="44" height="10" uuid="6c493128-bb96-4126-bd0c-fc47fa1b696e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dfa5bfa8-516f-4062-9676-17e8dcf51b46"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -320,7 +287,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[SUM($F{valor} )]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valor_total} ]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

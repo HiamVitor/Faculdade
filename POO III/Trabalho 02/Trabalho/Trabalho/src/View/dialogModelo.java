@@ -114,7 +114,7 @@ public class dialogModelo extends javax.swing.JDialog {
 
         jLabel3.setText("Nome");
 
-        jLabel4.setText("Modelo");
+        jLabel4.setText("Marca");
 
         textId.setEditable(false);
 

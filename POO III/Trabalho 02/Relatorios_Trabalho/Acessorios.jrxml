@@ -123,7 +123,7 @@ FROM acessorios]]>
 		<band height="50" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField evaluationTime="Report">
-				<reportElement x="-22" y="40" width="600" height="10" uuid="36d197cb-7ea2-419c-bbb5-5bcd1085b971">
+				<reportElement x="-22" y="40" width="596" height="10" uuid="36d197cb-7ea2-419c-bbb5-5bcd1085b971">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>

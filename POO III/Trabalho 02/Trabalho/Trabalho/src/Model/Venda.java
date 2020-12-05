@@ -32,11 +32,6 @@ public class Venda implements java.io.Serializable {
     private Veiculo veiculo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_MODELO", nullable = false, referencedColumnName = "ID")
-    @SwingColumn(description = "Modelo")
-    private Modelo modelo;
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID_VENDEDOR", nullable = false, referencedColumnName = "ID")
     @SwingColumn(description = "Vendedor")
     private Vendedor vendedor;
@@ -53,13 +48,12 @@ public class Venda implements java.io.Serializable {
 
     }
 
-    public Venda(int id, Pagamento pagamento, Veiculo veiculo, Modelo modelo,
+    public Venda(int id, Pagamento pagamento, Veiculo veiculo,
             double valor, Vendedor vendedor, Cliente cliente) {
         
         this.setId(id);
         this.setPagamento(pagamento);
         this.setVeiculo(veiculo);
-        this.setModelo(modelo);
         this.setValor(valor);
         this.setVendedor(vendedor);
         this.setCliente(cliente);
@@ -89,10 +83,6 @@ public class Venda implements java.io.Serializable {
         this.veiculo = veiculo;
     }
 
-    public void setModelo(Modelo modelo) {
-        this.modelo = modelo;
-    }
-
     public int getId() {
         return this.id;
     }
@@ -115,10 +105,6 @@ public class Venda implements java.io.Serializable {
 
     public double getValor() {
         return this.valor;
-    }
-
-    public Modelo getModelo() {
-        return this.modelo;
     }
 
     @Override

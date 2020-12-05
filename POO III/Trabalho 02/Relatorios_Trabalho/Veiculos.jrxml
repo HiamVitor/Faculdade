@@ -5,18 +5,22 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterTrabalho.xml"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT v.id,
+	CASE
+		WHEN v.cambio = 'MAN' THEN 'MANUAL'
+		WHEN v.cambio = 'AUT' THEN 'AUTOMÁTICO'
+	END as cambio_desc,
 	v.cambio,
 	CASE
 		WHEN v.combustivel = 'AlC' THEN 'Alcool'
-		WHEN v.combustivel = 'DIE' THEN 'Diesel'
-		WHEN v.combustivel = 'FLEX' THEN 'Flex'
-		WHEN v.combustivel = 'ELET' THEN 'Elétrico'
-		WHEN v.combustivel = 'GAS' THEN 'Gasolina'
-		WHEN v.combustivel = 'NGV' THEN 'Gnv'
+		WHEN v.combustivel = 'DIE' THEN 'DIESEL'
+		WHEN v.combustivel = 'FLEX' THEN 'FLEX'
+		WHEN v.combustivel = 'ELET' THEN 'ELÉTRICO'
+		WHEN v.combustivel = 'GAS' THEN 'GASOLINA'
+		WHEN v.combustivel = 'NGV' THEN 'GNV'
     END as nome_combustivel,
     v.combustivel,
 	v.id_modelo,
-	v.id_acessorios,
+	v.placa,
 	v.nome,
 	v.tipo,
 	m.nome as nome_modelo,
@@ -57,8 +61,9 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 	</field>
 	<field name="nome_marca" class="java.lang.String"/>
 	<field name="nome_modelo" class="java.lang.String"/>
-	<field name="id_acessorios" class="java.lang.Integer"/>
 	<field name="nome_combustivel" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="cambio_desc" class="java.lang.String"/>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 	</group>
@@ -73,9 +78,6 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 	</group>
 	<group name="tipo">
 		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
-	</group>
-	<group name="id_acessorios">
-		<groupExpression><![CDATA[$F{id_acessorios}]]></groupExpression>
 	</group>
 	<group name="id_modelo">
 		<groupExpression><![CDATA[$F{id_modelo}]]></groupExpression>
@@ -166,7 +168,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<text><![CDATA[NOME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="332" y="0" width="51" height="10" uuid="5d6f71a9-c0ba-4371-a717-d360c0d9ebc1">
+				<reportElement x="383" y="0" width="51" height="10" uuid="5d6f71a9-c0ba-4371-a717-d360c0d9ebc1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9950d986-0dfc-446a-8678-3a4c3000b7b7"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -176,7 +178,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<text><![CDATA[TIPO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="399" y="0" width="51" height="10" uuid="64c73ddb-1240-49fe-a6dc-f2b96e9af83a">
+				<reportElement x="500" y="0" width="51" height="10" uuid="64c73ddb-1240-49fe-a6dc-f2b96e9af83a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72dfa801-0331-4f1f-90f5-7522dae53e04"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -186,7 +188,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<text><![CDATA[MARCA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="0" width="79" height="10" uuid="ddc84415-4a0f-4321-9448-61893b7ee5a8">
+				<reportElement x="440" y="0" width="50" height="10" uuid="ddc84415-4a0f-4321-9448-61893b7ee5a8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78fc1907-a9da-4b69-9f3a-0c376ad7b733"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -196,21 +198,25 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<text><![CDATA[MODELO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="319" y="0" width="100" height="10" uuid="2bc287f1-4d14-4b98-95d1-d15f88c6ec3c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f68539f-e3e9-48d6-88f7-9f4f758cf14d"/>
+				<reportElement x="327" y="0" width="51" height="10" uuid="de05602c-671a-4a73-ad59-d6ad188da7a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9950d986-0dfc-446a-8678-3a4c3000b7b7"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[nome_combustivel]]></text>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[PLACA]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="3" y="0" width="551" height="10" uuid="3a029e9e-d6cc-4b32-b441-dedc71731cdc">
+				<reportElement mode="Transparent" x="8" y="0" width="551" height="10" uuid="e4d7ab56-8f37-42b1-b4ee-1022be5cb072">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 			</rectangle>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="10" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
 				<reportElement x="4" y="0" width="37" height="10" uuid="01091d33-ce72-4362-af06-4dbe2479a170">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a611760-ceb5-41fb-a539-f2cc7c816191"/>
@@ -223,14 +229,14 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="175" y="1" width="64" height="10" uuid="229f50cc-e041-4ed3-8273-a8c9cff3342e">
+				<reportElement x="175" y="0" width="64" height="10" uuid="229f50cc-e041-4ed3-8273-a8c9cff3342e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf1c8ec6-6773-495c-8db0-74386b384e91"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cambio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cambio_desc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="54" y="0" width="109" height="10" uuid="fbea0ea0-96c1-4175-a966-4b92d5246048">
@@ -243,7 +249,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="332" y="0" width="51" height="10" uuid="45ff2e29-2563-4367-9f99-2e1c24a838b9">
+				<reportElement x="383" y="0" width="51" height="10" uuid="45ff2e29-2563-4367-9f99-2e1c24a838b9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9950d986-0dfc-446a-8678-3a4c3000b7b7"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -253,7 +259,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="399" y="1" width="51" height="10" uuid="c3157134-266b-4021-b60d-d595b800a632">
+				<reportElement x="500" y="0" width="51" height="10" uuid="c3157134-266b-4021-b60d-d595b800a632">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72dfa801-0331-4f1f-90f5-7522dae53e04"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -263,7 +269,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<textFieldExpression><![CDATA[$F{nome_marca}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="460" y="1" width="79" height="10" uuid="9eed1dec-bcd6-41d4-9639-e992b75ad8ff">
+				<reportElement x="440" y="0" width="50" height="10" uuid="9eed1dec-bcd6-41d4-9639-e992b75ad8ff">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78fc1907-a9da-4b69-9f3a-0c376ad7b733"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -273,7 +279,7 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 				<textFieldExpression><![CDATA[$F{nome_modelo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="249" y="1" width="70" height="10" uuid="43a0c980-d250-4e98-aa26-486baf1b7a2e">
+				<reportElement x="249" y="0" width="70" height="10" uuid="43a0c980-d250-4e98-aa26-486baf1b7a2e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f68539f-e3e9-48d6-88f7-9f4f758cf14d"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -282,6 +288,17 @@ JOIN marcas ma on(ma.id = m.id_marca)]]>
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_combustivel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="0" width="51" height="10" uuid="8707b85a-e413-4589-ba5b-e62f97c56989">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92cf537a-3c7b-4eef-bdc5-4def3257d786"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{placa}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

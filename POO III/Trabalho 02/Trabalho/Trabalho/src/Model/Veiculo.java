@@ -50,6 +50,10 @@ public class Veiculo implements java.io.Serializable {
     @JoinColumn(name = "ID_MODELO", nullable = false, referencedColumnName = "ID")
     @SwingColumn(description = "Modelo")
     private Modelo modelo;
+    //
+    @Column(name = "Placa", nullable = false, length = 100)
+    @SwingColumn(description = "Placa")
+    private String placa;
 
     //
     public Veiculo() {
@@ -57,15 +61,15 @@ public class Veiculo implements java.io.Serializable {
     }
 
     public Veiculo(int id, String nome, Tipos tipo, Combustivel combustivel, Cambio cambio,
-            Modelo modelo) {
+            Modelo modelo, String placa) {
         this.setId(id);
         this.setNome(nome);
         this.setTipo(tipo);
         this.setCombustivel(combustivel);
         this.setCambio(cambio);
         this.setModelo(modelo);
+        this.setPlaca(placa);
     }
-
     //
     public void setId(int id) {
         this.id = id;
@@ -89,6 +93,10 @@ public class Veiculo implements java.io.Serializable {
 
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
+    }
+    
+    public void setPlaca(String placa) {
+        this.placa = placa.trim().isEmpty() ? "000-0000" : placa.toUpperCase();
     }
 
     //
@@ -114,6 +122,10 @@ public class Veiculo implements java.io.Serializable {
 
     public Modelo getModelo() {
         return this.modelo;
+    }
+    
+    public String getPlaca() {
+        return this.placa;
     }
 
     //
