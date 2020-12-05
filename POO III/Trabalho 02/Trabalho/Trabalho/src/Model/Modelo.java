@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "MODELO")
+@Table(name = "MODELOS")
 
 public class Modelo implements java.io.Serializable {
 

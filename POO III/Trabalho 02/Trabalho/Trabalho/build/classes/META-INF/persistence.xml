@@ -7,11 +7,13 @@
     <class>Model.Cliente</class>
     <class>Model.Vendedor</class>
     <class>Model.Veiculo</class>
-    <class>Model.Acessorios</class>
     <class>Model.Marca</class>
     <class>Model.Modelo</class>
     <class>Model.Venda</class>
     <class>Model.Pagamento</class>
+    <class>Model.Acessorio</class>
+    <class>Model.Item</class>
+    <class>Model.ItensVeiculo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/TrabalhoJPA"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

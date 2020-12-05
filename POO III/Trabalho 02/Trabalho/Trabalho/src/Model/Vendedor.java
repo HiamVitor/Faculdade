@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "VENDEDOR")
+@Table(name = "VENDEDORES")
 
 public class Vendedor implements java.io.Serializable {
 

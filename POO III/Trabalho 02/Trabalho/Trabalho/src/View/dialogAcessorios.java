@@ -1,19 +1,19 @@
 package View;
 
-import Controller.daoAcessorios;
-import Model.Acessorios;
+import Controller.daoAcessorio;
+import Model.Acessorio;
 import javax.swing.JOptionPane;
 
 public class dialogAcessorios extends javax.swing.JDialog {
 
-    private daoAcessorios dao = new daoAcessorios();
+    private daoAcessorio dao = new daoAcessorio();
 
     private void loadTable() {
-        tableDados.setModel(new MyTableModel(Acessorios.class, dao.getList(), tableDados));
+        tableDados.setModel(new MyTableModel(Acessorio.class, dao.getList(), tableDados));
     }
 
     private void loadTable(String filtro) {
-        tableDados.setModel(new MyTableModel(Acessorios.class, dao.getList(filtro), tableDados));
+        tableDados.setModel(new MyTableModel(Acessorio.class, dao.getList(filtro), tableDados));
     }
 
     private void iniciaComponentes() {
@@ -22,15 +22,15 @@ public class dialogAcessorios extends javax.swing.JDialog {
         textNome.requestFocus();
     }
 
-    private Acessorios createObject() {
-        return new Acessorios(
+    private Acessorio createObject() {
+        return new Acessorio(
                 textId.getText().isEmpty() ? 0 : Integer.parseInt(textId.getText()),
                 textNome.getText());
     }
 
-    private void populateComponents(Acessorios acessorios) {
-        textId.setText(acessorios.getId() + "");
-        textNome.setText(acessorios.getNome());
+    private void populateComponents(Acessorio acessorio) {
+        textId.setText(acessorio.getId() + "");
+        textNome.setText(acessorio.getNome());
     }
 
     public dialogAcessorios(java.awt.Frame parent, boolean modal) {
@@ -264,9 +264,9 @@ public class dialogAcessorios extends javax.swing.JDialog {
         }
         try {
             int codigo = Integer.parseInt(tableDados.getValueAt(tableDados.getSelectedRow(), 0) + "");
-            Acessorios acessorios = dao.retrieve(Acessorios.class, codigo);
+            Acessorio acessorio = dao.retrieve(Acessorio.class, codigo);
             //
-            dao.delete(acessorios);
+            dao.delete(acessorio);
             this.iniciaComponentes();
             this.loadTable();
         } catch (Exception ex) {
@@ -279,7 +279,7 @@ public class dialogAcessorios extends javax.swing.JDialog {
         if (evt.getClickCount() == 2) {
             //busca o valor selecionado na table e retorna como objeto
             int codigo = Integer.parseInt(tableDados.getValueAt(tableDados.getSelectedRow(), 0) + "");
-            Acessorios venda = dao.retrieve(Acessorios.class, codigo);
+            Acessorio venda = dao.retrieve(Acessorio.class, codigo);
             this.populateComponents(venda);
         }
     }//GEN-LAST:event_tableDadosMouseClicked

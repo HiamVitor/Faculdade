@@ -32,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
         frameVendas = new javax.swing.JMenuItem();
         frameCliente = new javax.swing.JMenuItem();
         frameVendedor = new javax.swing.JMenuItem();
+        frameVendas1 = new javax.swing.JMenuItem();
         frameVeiculo = new javax.swing.JMenuItem();
         frameMarcas = new javax.swing.JMenuItem();
         frameModelo = new javax.swing.JMenuItem();
@@ -67,6 +68,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(frameVendedor);
+
+        frameVendas1.setText("Acessorios do Veiculo");
+        frameVendas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frameVendas1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(frameVendas1);
 
         frameVeiculo.setText("Veiculo");
         frameVeiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -140,36 +149,41 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_frameClienteActionPerformed
 
     private void frameVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameVendedorActionPerformed
-     new dialogVendedor(this, true).setVisible(true);
+        new dialogVendedor(this, true).setVisible(true);
     }//GEN-LAST:event_frameVendedorActionPerformed
 
     private void frameMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameMarcasActionPerformed
-      new dialogMarca(this, true).setVisible(true);
+        new dialogMarca(this, true).setVisible(true);
     }//GEN-LAST:event_frameMarcasActionPerformed
 
     private void frameModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameModeloActionPerformed
-      new dialogModelo(this, true).setVisible(true); 
+        new dialogModelo(this, true).setVisible(true);
     }//GEN-LAST:event_frameModeloActionPerformed
 
     private void framePagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_framePagamentosActionPerformed
-        new dialogPagamentos(this, true).setVisible(true); 
+        new dialogPagamentos(this, true).setVisible(true);
     }//GEN-LAST:event_framePagamentosActionPerformed
 
     private void frameVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameVendasActionPerformed
-        new dialogVenda(this, true).setVisible(true); 
+        new dialogVenda(this, true).setVisible(true);
     }//GEN-LAST:event_frameVendasActionPerformed
 
     private void frameCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameCidadeActionPerformed
-        new dialogCidade(this, true).setVisible(true); 
+        new dialogCidade(this, true).setVisible(true);
     }//GEN-LAST:event_frameCidadeActionPerformed
 
     private void frameVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameVeiculoActionPerformed
-        new dialogVeiculo(this, true).setVisible(true); 
+        new dialogVeiculo(this, true).setVisible(true);
     }//GEN-LAST:event_frameVeiculoActionPerformed
 
     private void frameAcessoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameAcessoriosActionPerformed
-        new dialogAcessorios(this, true).setVisible(true); 
+        new dialogAcessorios(this, true).setVisible(true);
     }//GEN-LAST:event_frameAcessoriosActionPerformed
+
+    private void frameVendas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frameVendas1ActionPerformed
+        // TODO add your handling code here:
+        new dialogItensVeiculo(this, true).setVisible(true);
+    }//GEN-LAST:event_frameVendas1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +230,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem framePagamentos;
     private javax.swing.JMenuItem frameVeiculo;
     private javax.swing.JMenuItem frameVendas;
+    private javax.swing.JMenuItem frameVendas1;
     private javax.swing.JMenuItem frameVendedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

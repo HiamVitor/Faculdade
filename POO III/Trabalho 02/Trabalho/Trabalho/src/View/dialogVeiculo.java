@@ -1,12 +1,11 @@
 package View;
 
-import Controller.daoAcessorios;
 import Controller.daoModelo;
 import Controller.daoVeiculo;
 import Enums.Cambio;
 import Enums.Combustivel;
 import Enums.Tipos;
-import Model.Acessorios;
+import Model.Acessorio;
 import Model.Modelo;
 import Model.Veiculo;
 import javax.swing.DefaultComboBoxModel;
@@ -49,13 +48,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
         comboModelo.setModel(cbm);
     }
 
-    private void loadComboAcessorios() {
-        DefaultComboBoxModel cbm = new DefaultComboBoxModel(
-                new daoAcessorios().getList().toArray()
-        );
-        comboAcessorio.setModel(cbm);
-    }
-
     //inicia os componentes
     private void iniciaComponentes() {
         textId.setText("");
@@ -72,8 +64,7 @@ public class dialogVeiculo extends javax.swing.JDialog {
                 (Tipos) comboTipo.getSelectedItem(),
                 (Combustivel) comboCombustivel.getSelectedItem(),
                 (Cambio) comboCambio.getSelectedItem(),
-                (Modelo) comboModelo.getSelectedItem(),
-                (Acessorios) comboAcessorio.getSelectedItem());
+                (Modelo) comboModelo.getSelectedItem());
     }
 
     //popula os componentes de tela a partir de objeto
@@ -84,7 +75,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
         comboCombustivel.setSelectedItem(veiculo.getCombustivel());
         comboCambio.setSelectedItem(veiculo.getCambio());
         comboModelo.setSelectedItem(veiculo.getModelo());
-        comboAcessorio.setSelectedItem(veiculo.getAcessorios());
     }
 
     public dialogVeiculo(java.awt.Frame parent, boolean modal) {
@@ -119,8 +109,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
         comboCombustivel = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         comboModelo = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        comboAcessorio = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         textFiltro = new javax.swing.JTextField();
@@ -197,10 +185,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
 
         comboModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel8.setText("Acessórios");
-
-        comboAcessorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -226,13 +210,9 @@ public class dialogVeiculo extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(comboCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboAcessorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(comboCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,15 +250,15 @@ public class dialogVeiculo extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(comboCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(comboAcessorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(comboCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(comboCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(comboCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -359,7 +339,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
         this.loadEnumCambio();
         this.loadEnumCombustivel();
         this.loadComboModelo();
-        this.loadComboAcessorios();
     }//GEN-LAST:event_formWindowOpened
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
@@ -469,7 +448,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonRemover;
     private javax.swing.JButton buttonSalvar;
-    private javax.swing.JComboBox<String> comboAcessorio;
     private javax.swing.JComboBox<String> comboCambio;
     private javax.swing.JComboBox<String> comboCombustivel;
     private javax.swing.JComboBox<String> comboModelo;
@@ -481,7 +459,6 @@ public class dialogVeiculo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -8,25 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ACESSORIO")
+@Table(name = "ACESSORIOS")
 
-public class Acessorios implements java.io.Serializable {
+public class Acessorio implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     @SwingColumn(description = "Código")
     private int id;
-    
+
     @Column(name = "NOME", length = 100, nullable = false)
     @SwingColumn(description = "Nome")
     private String nome;
 
     //
-    public Acessorios() {
+    public Acessorio() {
     }
 
-    public Acessorios(int id, String nome) {
+    public Acessorio(int id, String nome) {
         this.setId(id);
         this.setNome(nome);
     }
@@ -73,7 +73,7 @@ public class Acessorios implements java.io.Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Acessorios other = (Acessorios) obj;
+        final Acessorio other = (Acessorio) obj;
         if (this.id != other.id) {
             return false;
         }

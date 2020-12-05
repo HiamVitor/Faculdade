@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "VENDA")
+@Table(name = "VENDAS")
 
 public class Venda implements java.io.Serializable {
 
@@ -37,12 +37,12 @@ public class Venda implements java.io.Serializable {
     private Modelo modelo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_Vendedor", nullable = false, referencedColumnName = "ID")
+    @JoinColumn(name = "ID_VENDEDOR", nullable = false, referencedColumnName = "ID")
     @SwingColumn(description = "Vendedor")
     private Vendedor vendedor;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_Cliente", nullable = false, referencedColumnName = "ID")
+    @JoinColumn(name = "ID_CLIENTE", nullable = false, referencedColumnName = "ID")
     @SwingColumn(description = "Cliente")
     private Cliente cliente;
 

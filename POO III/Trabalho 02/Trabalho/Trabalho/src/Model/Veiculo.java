@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "VEICULO")
+@Table(name = "VEICULOS")
 
 public class Veiculo implements java.io.Serializable {
 
@@ -51,24 +51,19 @@ public class Veiculo implements java.io.Serializable {
     @SwingColumn(description = "Modelo")
     private Modelo modelo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_ACESSORIOS", nullable = false, referencedColumnName = "ID")
-    private Acessorios acessorios;
-
     //
     public Veiculo() {
 
     }
 
     public Veiculo(int id, String nome, Tipos tipo, Combustivel combustivel, Cambio cambio,
-            Modelo modelo, Acessorios acessorios) {
+            Modelo modelo) {
         this.setId(id);
         this.setNome(nome);
         this.setTipo(tipo);
         this.setCombustivel(combustivel);
         this.setCambio(cambio);
         this.setModelo(modelo);
-        this.setAcessorios(acessorios);
     }
 
     //
@@ -96,10 +91,6 @@ public class Veiculo implements java.io.Serializable {
         this.modelo = modelo;
     }
 
-    public void setAcessorios(Acessorios acessorios) {
-        this.acessorios = acessorios;
-    }
-
     //
     public int getId() {
         return this.id;
@@ -123,10 +114,6 @@ public class Veiculo implements java.io.Serializable {
 
     public Modelo getModelo() {
         return this.modelo;
-    }
-
-    public Acessorios getAcessorios() {
-        return this.acessorios;
     }
 
     //
