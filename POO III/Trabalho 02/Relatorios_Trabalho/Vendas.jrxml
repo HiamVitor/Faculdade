@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vendas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b9da1dc-0344-4cd9-a980-378aafb2c2b1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="dmVuZGFzIEFTICwxNjksMTIzLGFhNjBmOWIyLTlmYmQtNDAzMS1hNjJhLWQ4NGI0OWRiY2FiOTs="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterTrabalho.xml"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT vendas.valor,
+	vendas.id,
+	vendas.id_cliente,
+	vendas.id_modelo,
+	vendas.id_pagamento,
+	vendas.id_veiculo,
+	vendas.id_vendedor
+FROM vendas]]>
+	</queryString>
+	<field name="valor" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor"/>
+		<property name="com.jaspersoft.studio.field.label" value="valor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id_cliente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id_modelo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id_pagamento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_pagamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_pagamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id_veiculo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_veiculo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_veiculo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<field name="id_vendedor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_vendedor"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_vendedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vendas"/>
+	</field>
+	<group name="valor">
+		<groupExpression><![CDATA[$F{valor}]]></groupExpression>
+	</group>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="id_cliente">
+		<groupExpression><![CDATA[$F{id_cliente}]]></groupExpression>
+	</group>
+	<group name="id_modelo">
+		<groupExpression><![CDATA[$F{id_modelo}]]></groupExpression>
+	</group>
+	<group name="id_pagamento">
+		<groupExpression><![CDATA[$F{id_pagamento}]]></groupExpression>
+	</group>
+	<group name="id_veiculo">
+		<groupExpression><![CDATA[$F{id_veiculo}]]></groupExpression>
+	</group>
+	<group name="id_vendedor">
+		<groupExpression><![CDATA[$F{id_vendedor}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
