@@ -4,14 +4,26 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value="dmVpY3Vsb3MgQVMgLDg1LDE0MixkZjc5MTk5Ni1kOWY3LTQ2ZTgtYTFmNS02YmMyNjk1ZGVhZTk7"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterTrabalho.xml"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT veiculos.id,
-	veiculos.cambio,
-	veiculos.combustivel,
-	veiculos.nome,
-	veiculos.tipo,
-	veiculos.id_acessorios,
-	veiculos.id_modelo
-FROM veiculos]]>
+		<![CDATA[SELECT v.id,
+	v.cambio,
+	CASE
+		WHEN v.combustivel = 'AlC' THEN 'Alcool'
+		WHEN v.combustivel = 'DIE' THEN 'Diesel'
+		WHEN v.combustivel = 'FLEX' THEN 'Flex'
+		WHEN v.combustivel = 'ELET' THEN 'Elétrico'
+		WHEN v.combustivel = 'GAS' THEN 'Gasolina'
+		WHEN v.combustivel = 'NGV' THEN 'Gnv'
+    END as nome_combustivel,
+    v.combustivel,
+	v.id_modelo,
+	v.id_acessorios,
+	v.nome,
+	v.tipo,
+	m.nome as nome_modelo,
+	ma.nome as nome_marca
+FROM veiculos v
+JOIN modelos m on(m.id = v.id_modelo)
+JOIN marcas ma on(ma.id = m.id_marca)]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -38,16 +50,15 @@ FROM veiculos]]>
 		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="veiculos"/>
 	</field>
-	<field name="id_acessorios" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_acessorios"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_acessorios"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="veiculos"/>
-	</field>
 	<field name="id_modelo" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id_modelo"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_modelo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="veiculos"/>
 	</field>
+	<field name="nome_marca" class="java.lang.String"/>
+	<field name="nome_modelo" class="java.lang.String"/>
+	<field name="id_acessorios" class="java.lang.Integer"/>
+	<field name="nome_combustivel" class="java.lang.String"/>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 	</group>
@@ -72,25 +83,225 @@ FROM veiculos]]>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="25" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="-20" y="2" width="594" height="10" uuid="0d8648ca-5dc4-4650-99d2-73235e4e75a0">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE VEICULOS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="478" y="2" width="50" height="10" uuid="0141c6a7-1ba3-43b6-8061-a3b7837e951e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="526" y="2" width="34" height="10" uuid="21685ca4-3548-4594-aa31-01783f8ccc31">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="10" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="4" y="0" width="37" height="10" uuid="ea3cb387-0b5d-49ce-b0b6-bd6c2bf7aa2b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a611760-ceb5-41fb-a539-f2cc7c816191"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="0" width="64" height="10" uuid="efdd0af6-c441-4e91-a25e-af6281cc86f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf1c8ec6-6773-495c-8db0-74386b384e91"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[CÂMBIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="0" width="70" height="10" uuid="eae32e3d-1a35-499c-b44e-e23e7c68c9d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="67c8fdfb-3c79-40ec-9b27-b2da50b47414"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[COMBUSTÍVEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="0" width="109" height="10" uuid="a37d0d8b-35a2-4938-b95b-db044b487631">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88724de5-8c6d-496f-bbf9-e79f742e06c1"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="0" width="51" height="10" uuid="5d6f71a9-c0ba-4371-a717-d360c0d9ebc1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9950d986-0dfc-446a-8678-3a4c3000b7b7"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="0" width="51" height="10" uuid="64c73ddb-1240-49fe-a6dc-f2b96e9af83a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72dfa801-0331-4f1f-90f5-7522dae53e04"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="79" height="10" uuid="ddc84415-4a0f-4321-9448-61893b7ee5a8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78fc1907-a9da-4b69-9f3a-0c376ad7b733"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="0" width="100" height="10" uuid="2bc287f1-4d14-4b98-95d1-d15f88c6ec3c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f68539f-e3e9-48d6-88f7-9f4f758cf14d"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[nome_combustivel]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="3" y="0" width="551" height="10" uuid="3a029e9e-d6cc-4b32-b441-dedc71731cdc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="11" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="37" height="10" uuid="01091d33-ce72-4362-af06-4dbe2479a170">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0a611760-ceb5-41fb-a539-f2cc7c816191"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="1" width="64" height="10" uuid="229f50cc-e041-4ed3-8273-a8c9cff3342e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cf1c8ec6-6773-495c-8db0-74386b384e91"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="109" height="10" uuid="fbea0ea0-96c1-4175-a966-4b92d5246048">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88724de5-8c6d-496f-bbf9-e79f742e06c1"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="51" height="10" uuid="45ff2e29-2563-4367-9f99-2e1c24a838b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9950d986-0dfc-446a-8678-3a4c3000b7b7"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="1" width="51" height="10" uuid="c3157134-266b-4021-b60d-d595b800a632">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="72dfa801-0331-4f1f-90f5-7522dae53e04"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="1" width="79" height="10" uuid="9eed1dec-bcd6-41d4-9639-e992b75ad8ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78fc1907-a9da-4b69-9f3a-0c376ad7b733"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="1" width="70" height="10" uuid="43a0c980-d250-4e98-aa26-486baf1b7a2e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f68539f-e3e9-48d6-88f7-9f4f758cf14d"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_combustivel}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="-20" y="44" width="594" height="10" uuid="89650f3c-d782-4d4a-b551-d76d759b1fe5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
