@@ -1,0 +1,6 @@
+ionic start gamestore
+ionic generate page jogo-cadastro
+ionic generate page jogo-lista
+ionic generate class shared/jogo
+ionic generate enum shared/genero
+ionic generate service shared/jogo
