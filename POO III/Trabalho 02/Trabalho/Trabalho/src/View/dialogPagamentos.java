@@ -1,18 +1,24 @@
 package View;
 
 import Controller.daoPagamento;
+import Dados.Banco;
 import Model.Pagamento;
+import java.sql.SQLException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class dialogPagamentos extends javax.swing.JDialog {
 
     private daoPagamento dao = new daoPagamento();
-    
+
     private void loadTable() {
         tableDados.setModel(new MyTableModel(Pagamento.class, dao.getList(), tableDados));
     }
-    
+
     private void loadTable(String filtro) {
         tableDados.setModel(new MyTableModel(Pagamento.class, dao.getList(filtro), tableDados));
     }
@@ -65,6 +71,7 @@ public class dialogPagamentos extends javax.swing.JDialog {
         buttonNovo = new javax.swing.JButton();
         buttonSalvar = new javax.swing.JButton();
         buttonRemover = new javax.swing.JButton();
+        buttonRelatorio = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDados = new javax.swing.JTable();
 
@@ -140,6 +147,13 @@ public class dialogPagamentos extends javax.swing.JDialog {
             }
         });
 
+        buttonRelatorio.setText("Relatório");
+        buttonRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRelatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -158,12 +172,14 @@ public class dialogPagamentos extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(42, 42, 42)
                         .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -180,7 +196,8 @@ public class dialogPagamentos extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
                     .addComponent(buttonSalvar)
-                    .addComponent(buttonRemover)))
+                    .addComponent(buttonRemover)
+                    .addComponent(buttonRelatorio)))
         );
 
         tableDados.setModel(new javax.swing.table.DefaultTableModel(
@@ -270,8 +287,8 @@ public class dialogPagamentos extends javax.swing.JDialog {
         try {
             int codigo = Integer.parseInt(tableDados.getValueAt(tableDados.getSelectedRow(), 0) + "");
             Pagamento pagamento = dao.retrieve(Pagamento.class, codigo);
-            
-            dao.delete(pagamento); 
+
+            dao.delete(pagamento);
             this.iniciaComponentes();
             this.loadTable();
         } catch (Exception ex) {
@@ -288,6 +305,21 @@ public class dialogPagamentos extends javax.swing.JDialog {
             this.populateComponents(venda);
         }
     }//GEN-LAST:event_tableDadosMouseClicked
+
+    private void buttonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRelatorioActionPerformed
+        try {
+            String path = "C:\\Users\\Gustavo\\Google Drive\\Faculdade\\POO III\\Trabalho 02\\Relatorios_Trabalho\\Formas de Pagamento.jasper";
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, null, Banco.getConnection());
+            JasperViewer viewer = new JasperViewer(jasperPrint);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+            viewer.setTitle("Relatório de Cidades");
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            System.out.println("Erro Relatório de Cidades: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_buttonRelatorioActionPerformed
 
     /**
      *
@@ -336,6 +368,7 @@ public class dialogPagamentos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFiltro;
     private javax.swing.JButton buttonNovo;
+    private javax.swing.JButton buttonRelatorio;
     private javax.swing.JButton buttonRemover;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JLabel jLabel1;

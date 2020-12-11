@@ -1,0 +1,7 @@
+2. função isset();
+ex:
+
+carros = array("a" => "ka", "b" => "kwid");
+if(isset($carros['a'])){
+    echo $carros['a'];
+}

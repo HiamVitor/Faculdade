@@ -2,14 +2,20 @@ package View;
 
 import Controller.daoModelo;
 import Controller.daoVeiculo;
+import Dados.Banco;
 import Enums.Cambio;
 import Enums.Combustivel;
 import Enums.Tipos;
 import Model.Acessorio;
 import Model.Modelo;
 import Model.Veiculo;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class dialogVeiculo extends javax.swing.JDialog {
 
@@ -114,6 +120,7 @@ public class dialogVeiculo extends javax.swing.JDialog {
         comboModelo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         TextPlaca = new javax.swing.JTextField();
+        buttonRetorio = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         textFiltro = new javax.swing.JTextField();
@@ -192,20 +199,19 @@ public class dialogVeiculo extends javax.swing.JDialog {
 
         jLabel8.setText("Placa");
 
+        buttonRetorio.setText("Relatório");
+        buttonRetorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRetorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +236,18 @@ public class dialogVeiculo extends javax.swing.JDialog {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboCambio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboCombustivel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRetorio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -247,7 +264,7 @@ public class dialogVeiculo extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(comboModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -266,11 +283,12 @@ public class dialogVeiculo extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(comboCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
                     .addComponent(buttonSalvar)
-                    .addComponent(buttonRemover))
+                    .addComponent(buttonRemover)
+                    .addComponent(buttonRetorio))
                 .addContainerGap())
         );
 
@@ -403,6 +421,21 @@ public class dialogVeiculo extends javax.swing.JDialog {
         this.iniciaComponentes();
     }//GEN-LAST:event_buttonNovoActionPerformed
 
+    private void buttonRetorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRetorioActionPerformed
+        try {
+            String path = "C:\\Users\\Gustavo\\Google Drive\\Faculdade\\POO III\\Trabalho 02\\Relatorios_Trabalho\\Veiculos.jasper";
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, null, Banco.getConnection());
+            JasperViewer viewer = new JasperViewer(jasperPrint);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+            viewer.setTitle("Relatório de Cidades");
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            System.out.println("Erro Relatório de Cidades: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_buttonRetorioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -453,6 +486,7 @@ public class dialogVeiculo extends javax.swing.JDialog {
     private javax.swing.JButton buttonFiltro;
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonRemover;
+    private javax.swing.JButton buttonRetorio;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JComboBox<String> comboCambio;
     private javax.swing.JComboBox<String> comboCombustivel;

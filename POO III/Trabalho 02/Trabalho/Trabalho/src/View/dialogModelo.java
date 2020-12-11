@@ -2,10 +2,16 @@ package View;
 
 import Controller.daoMarca;
 import Controller.daoModelo;
+import Dados.Banco;
 import Model.Marca;
 import Model.Modelo;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class dialogModelo extends javax.swing.JDialog {
 
@@ -20,14 +26,14 @@ public class dialogModelo extends javax.swing.JDialog {
     private void loadTable(String filtro) {
         tableDados.setModel(new MyTableModel(Modelo.class, dao.getList(filtro), tableDados));
     }
-    
+
     private void loadComboMarca() {
         DefaultComboBoxModel cbm = new DefaultComboBoxModel(
                 new daoMarca().getList().toArray()
         );
         comboMarca.setModel(cbm);
     }
-    
+
     //inicia os componentes
     private void iniciaComponentes() {
         textId.setText("");
@@ -77,6 +83,7 @@ public class dialogModelo extends javax.swing.JDialog {
         buttonSalvar = new javax.swing.JButton();
         buttonRemover = new javax.swing.JButton();
         comboMarca = new javax.swing.JComboBox<>();
+        buttonRelatorio = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         textFiltro = new javax.swing.JTextField();
@@ -141,6 +148,13 @@ public class dialogModelo extends javax.swing.JDialog {
 
         comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        buttonRelatorio.setText("Relatório");
+        buttonRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRelatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,16 +173,17 @@ public class dialogModelo extends javax.swing.JDialog {
                             .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(comboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +203,9 @@ public class dialogModelo extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
                     .addComponent(buttonSalvar)
-                    .addComponent(buttonRemover))
-                .addContainerGap(8, Short.MAX_VALUE))
+                    .addComponent(buttonRemover)
+                    .addComponent(buttonRelatorio))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -318,6 +334,21 @@ public class dialogModelo extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tableDadosMouseClicked
 
+    private void buttonRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRelatorioActionPerformed
+        try {
+            String path = "C:\\Users\\Gustavo\\Google Drive\\Faculdade\\POO III\\Trabalho 02\\Relatorios_Trabalho\\Modelos.jasper";
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, null, Banco.getConnection());
+            JasperViewer viewer = new JasperViewer(jasperPrint);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+            viewer.setTitle("Relatório de Cidades");
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            System.out.println("Erro Relatório de Cidades: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_buttonRelatorioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -366,6 +397,7 @@ public class dialogModelo extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFiltro;
     private javax.swing.JButton buttonNovo;
+    private javax.swing.JButton buttonRelatorio;
     private javax.swing.JButton buttonRemover;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JComboBox<String> comboMarca;

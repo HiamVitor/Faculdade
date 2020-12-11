@@ -5,22 +5,30 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterTrabalho.xml"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT v.id,
-	   v.valor,	   
-	   v.id_cliente,
-	   v.id_pagamento,
-	   v.id_veiculo,
-	   v.id_vendedor,
-	   c.nome as nome_cliente,
-	   p.nome as forma_pagamento,
-	   vend.nome as nome_vendedor,
-	   vei.nome as nome_veiculo,
-	   (SELECT sum(v.valor)
-		 FROM VENDAS v) as valor_total
+	v.valor,
+	v.id_cliente,
+	v.id_pagamento,
+	v.id_veiculo,
+	v.id_vendedor,
+	c.nome AS nome_cliente,
+	p.nome AS forma_pagamento,
+	vend.nome AS nome_vendedor,
+	vei.nome AS nome_veiculo,
+	(SELECT sum( v.valor)
+FROM vendas v) AS valor_total
 FROM vendas v
-JOIN clientes c on (c.id = v.id_cliente)
-JOIN pagamentos p on (p.id = v.id_pagamento)
-JOIN vendedores vend on (vend.id = v.id_vendedor)
-JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
+	JOIN clientes c ON 
+	  ( 
+	 c.id = v.id_cliente) 
+	JOIN pagamentos p ON 
+	  ( 
+	 p.id = v.id_pagamento) 
+	JOIN vendedores vend ON 
+	  ( 
+	 vend.id = v.id_vendedor) 
+	JOIN veiculos vei ON 
+	  ( 
+	 vei.id = v.id_veiculo) ]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -287,7 +295,7 @@ JOIN veiculos vei on (vei.id = v.id_veiculo)]]>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{valor_total} ]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valor_total}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

@@ -1,6 +1,0 @@
-Atributo type para definir o tipo do input.
-Atributo autofocus para definir foco automatico para um input.
-Atributo placeholder para definir um texto/valor no input antes de digitar algo.
-
-Ex:
-<input type="text" name="nome" id="nome" maxlength="100" value="" placeholder="Digite seu nome"/>

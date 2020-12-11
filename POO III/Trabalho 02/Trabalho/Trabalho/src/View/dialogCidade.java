@@ -1,10 +1,16 @@
 package View;
 
 import Controller.daoCidade;
+import Dados.Banco;
 import Enums.Estados;
 import Model.Cidade;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class dialogCidade extends javax.swing.JDialog {
 
@@ -69,6 +75,7 @@ public class dialogCidade extends javax.swing.JDialog {
         buttonSalvar = new javax.swing.JButton();
         buttonRemover = new javax.swing.JButton();
         comboEstado = new javax.swing.JComboBox<>();
+        buttonRemover1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         textFiltro = new javax.swing.JTextField();
@@ -133,6 +140,13 @@ public class dialogCidade extends javax.swing.JDialog {
 
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        buttonRemover1.setText("Relatório");
+        buttonRemover1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemover1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -151,12 +165,14 @@ public class dialogCidade extends javax.swing.JDialog {
                             .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textNome, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(34, 34, 34)
                         .addComponent(buttonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRemover1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -177,7 +193,8 @@ public class dialogCidade extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNovo)
                     .addComponent(buttonSalvar)
-                    .addComponent(buttonRemover))
+                    .addComponent(buttonRemover)
+                    .addComponent(buttonRemover1))
                 .addContainerGap())
         );
 
@@ -260,9 +277,9 @@ public class dialogCidade extends javax.swing.JDialog {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         // TODO add your handling code here:
         try {
-            if (textId.getText().isEmpty()) { 
+            if (textId.getText().isEmpty()) {
                 dao.add(this.createObject());
-            } else { 
+            } else {
                 dao.update(this.createObject());
             }
             this.iniciaComponentes();
@@ -308,6 +325,21 @@ public class dialogCidade extends javax.swing.JDialog {
             this.populateComponents(cidade);
         }
     }//GEN-LAST:event_tableDadosMouseClicked
+
+    private void buttonRemover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemover1ActionPerformed
+        try {
+            String path = "C:\\Users\\Gustavo\\Google Drive\\Faculdade\\POO III\\Trabalho 02\\Relatorios_Trabalho\\Cidades.jasper";
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, null, Banco.getConnection());
+            JasperViewer viewer = new JasperViewer(jasperPrint);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+            viewer.setTitle("Relatório de Cidades");
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            System.out.println("Erro Relatório de Cidades: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("ERRO: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_buttonRemover1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,6 +388,7 @@ public class dialogCidade extends javax.swing.JDialog {
     private javax.swing.JButton buttonFiltro;
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonRemover;
+    private javax.swing.JButton buttonRemover1;
     private javax.swing.JButton buttonSalvar;
     private javax.swing.JComboBox<String> comboEstado;
     private javax.swing.JLabel jLabel1;
