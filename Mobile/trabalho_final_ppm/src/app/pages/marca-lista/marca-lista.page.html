@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Concessionária</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-list-header> Carros disponíveis </ion-list-header>
+
+      <ion-item-sliding *ngFor="let marca of listaMarcas">
+          <ion-item>
+              <ion-avatar slot="start">
+                  <img [src]="marca.logo" />
+              </ion-avatar>
+
+              <ion-label>
+                  <h2>{{marca.nome}}</h2>
+              </ion-label>
+          </ion-item>
+
+          <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="excluir(marca)">
+                  <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-item-option>
+          </ion-item-options>
+
+          <ion-item-options side="start">
+              <ion-item-option (click)="editar(marca)">
+                  <ion-icon name="pencil" slot="icon-only"></ion-icon>
+              </ion-item-option>
+          </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button>
+          <ion-icon name="add" [routerLink]="['/marca-cadastro']"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+</ion-content>

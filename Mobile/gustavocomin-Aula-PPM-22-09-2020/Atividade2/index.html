@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hellor World JavaScript</title>
+        <link href="./style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div>
+            <label for="campoPeso">Digite seu peso: </label>
+            <input id="campoPeso" type="text" />
+
+            <label for="campoAltura">Digite sua altura: </label>
+            <input id="campoAltura" type="text" />
+
+            <button id="botaoCalcular">Calcular IMC</button>
+            <button id="botaoLimpar">Limpar</button>
+            <p id="resultado"></p>
+
+            <ol id="tabela">
+                <li class="vermelho">< 16 - Magreza grave</li>
+                <li class="amarelo">16 a < 17 - Magreza moderada</li>
+                <li class="preto">17 a < 18,5 - Magreza leve</li>
+                <li class="verde">18,5 a < 25 - Saudável</li>
+                <li class="preto">25 a < 30 - Sobrepeso</li>
+                <li class="amarelo">30 a < 35 - Obesidade Grau I</li>
+                <li class="vermelho">35 a < 40 - Obesidade Grau II (severa)</li>
+                <li class="vermelho">≥ 40 - Obesidade Grau III (mórbida)</li>
+            </ol>
+        </div>
+        <script src="./index.js"></script>
+    </body>
+</html>

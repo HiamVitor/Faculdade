@@ -1,0 +1,14 @@
+<ul>
+    <li *ngFor="let livro of livros">
+        {{ livro.titulo }}
+        <ol>
+            <li *ngFor="let autor of livro.autores">
+                {{ autor.sobrenome | uppercase }}, {{ autor.nome | titlecase }}
+            </li>
+        </ol>
+        <span>Quantidade: {{ livro.quantidade }}</span>
+        <br />
+        <button *ngIf="livro.quantidade > 0">Comprar</button>
+        <button *ngIf="livro.quantidade <= 0" disabled>Indisponível</button>
+    </li>
+</ul>

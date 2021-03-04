@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Cadastro de marcas</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>Código</ion-label>
+        <ion-input disabled = "true" [(ngModel)]="marca.codigo" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-input [(ngModel)]="marca.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Logo</ion-label>
+        <ion-input [(ngModel)]="marca.logo" placeholder="https://...."></ion-input>
+    </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="salvar()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

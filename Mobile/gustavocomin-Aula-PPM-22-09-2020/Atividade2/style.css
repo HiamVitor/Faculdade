@@ -1,0 +1,49 @@
+div {
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 500px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: rgb(91, 82, 228);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ol li {
+    text-align: justify;
+    list-style-type: none;
+}
+
+body {
+    background-color: rgb(79, 107, 167);
+}
+
+label {
+    display: block;
+}
+
+input {
+    text-align: center;
+    display: inline;
+}
+
+p{
+    text-align: center;
+}
+
+.teste {
+    display: none;
+}
+
+.vermelho {
+    color: red;
+}
+.amarelo {
+    color: rgba(255, 255, 0, 0.692);
+}
+.preto {
+    color: black;
+}
+.verde {
+    color: green;
+}

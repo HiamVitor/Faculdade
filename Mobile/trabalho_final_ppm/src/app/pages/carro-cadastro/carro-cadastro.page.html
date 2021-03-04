@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Cadastro de carros</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>Código:</ion-label>
+        <ion-input disabled = "true" [(ngModel)]="carro.codigo" type="number" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input [(ngModel)]="carro.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Modelo:</ion-label>
+        <ion-input [(ngModel)]="carro.modelo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Valor:</ion-label>
+        <ion-input [(ngModel)]="carro.valor" inputmode="decimal"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Logo:</ion-label>
+        <ion-input [(ngModel)]="carro.logo" placeholder="https://...."></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Combustivel:</ion-label>
+        <ion-select
+            [(ngModel)]="carro.combustivel"
+            multiple="false"
+            placeholder="Selecione o tipo de combustível">
+            <ion-select-option
+                *ngFor="let combustivel of combustiveis"
+                [value]="combustivel.valor"
+            >
+                {{combustivel.descricao}}
+            </ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Data de Lançamento:</ion-label>
+        <ion-datetime
+            [(ngModel)]="carro.dataLancamento"
+            displayFormat="DD/MM/YYYY"
+            cancelText="Cancelar"
+            doneText="Selecionar"
+        ></ion-datetime>
+    </ion-item>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="salvar()">
+            <ion-icon name="checkmark"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

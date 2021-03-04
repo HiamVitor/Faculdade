@@ -1,0 +1,25 @@
+<div>
+    <h1>Bem vindo!</h1>
+</div>
+<div>
+    <h2>Calcule o consumo do seu veículo</h2>
+</div>
+<div>
+    <input type="number" placeholder="Distância percorrida..." [(ngModel)]="distancia"/>
+</div>
+<div>
+    <input type="number" placeholder="Litros" [(ngModel)]="litros"/>
+</div>
+
+<p>
+    <button (click)="calcular()">Calcular</button>
+    <button (click)="limpar()">Limpar</button>
+</p>
+<p *ngIf="calc > 0">
+    {{ calc + " Km/l" }}
+</p>
+<p *ngIf="calc > 13">Econômico</p>
+
+<p *ngIf="calc >= 10 && calc < 12.99">Normal</p>
+
+<p *ngIf="calc <= 9.99 && calc != 0">Gastador</p>

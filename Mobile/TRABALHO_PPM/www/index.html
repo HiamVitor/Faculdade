@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
+            style-src 'self' 'unsafe-inline'; 
+            media-src *; 
+            script-src 'self' 'unsafe-inline';
+            img-src 'self' data: content:;"
+        />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta
+            name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"
+        />
+        <link rel="stylesheet" href="./css/camera.css" />
+        <link rel="stylesheet" href="./css/index.css" />
+        <title>Project 1</title>
+    </head>
+    <body>
+        <div class="page">
+            <h1>Câmera</h1>
+            <p><img src="img/logo.png" alt="image" id="photo" /></p>
+            <p><button id="btn">Tirar foto</button></p>
+            <p id="msg"></p>
+        </div>
+
+        <div class="cadastro">
+            <h1>Cadastro</h1>
+            <table>
+                <tr>
+                    <td>
+                        <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                            <div>
+                                <label>Nome </label>
+                                <label class="validation-error hide" id="fullNameValidationError"></label>
+                                    This field is required.
+                                </label>
+                                <input type="text" name="nome" id="nome" />
+                            </div>
+                            <div>
+                                <label>Idade</label>
+                                <input type="number" name="idade" id="idade" />
+                            </div>
+                            <div>
+                                <label>CPF</label>
+                                <input type="number" name="cpf" id="cpf" />
+                            </div>
+                            <div>
+                                <label>Endereço</label>
+                                <input type="text" name="endereco" id="endereco" />
+                            </div>
+                            <div>
+                                <label>Telefone</label>
+                                <input type="number" name="telefone" id="telefone" />
+                            </div>
+                            <div class="form-action-buttons">
+                                <input type="submit" value="Enviar" />
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <td>
+                <table class="lista" id="listaCadastro">
+                    <thead>
+                        <tr>
+                            <th>Usuários registrados:</th>
+                        </tr>
+                    </thead>
+                    <div class="teste">
+                        <tbody></tbody>
+                        <p class="botao" id="botoes"></p>
+                    </div>
+                </table>
+            </td>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="./js/camera.js"></script>
+        <script src="./js/index.js"></script>
+    </body>
+</html>

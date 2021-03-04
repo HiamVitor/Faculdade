@@ -1,0 +1,15 @@
+#btn{
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin: 1rem;
+    
+}
+#msg{
+    border: 1px solid #eee;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.page{
+    text-align: center;
+}
