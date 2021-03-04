@@ -1,0 +1,5 @@
+- Função sort();
+ex:
+comidas = array("d" => "pizza", "a" => "xis", 
+                "b" => "hambuger", "c" => "taboa");
+sort($frutas);
