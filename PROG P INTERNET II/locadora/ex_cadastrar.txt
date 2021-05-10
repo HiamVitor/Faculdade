@@ -1,0 +1,9 @@
+Criar telas de cadatro conforme modelo:
+
+Campos id_cliente, id_midia e id_distribuidor
+<select>
+	while () {
+	<option>
+	}
+
+Adicionar link nas telas de listar

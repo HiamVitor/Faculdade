@@ -1,0 +1,41 @@
+{
+  "autores": [
+    {
+      "nome": "Martin Fowler",
+      "dataNascimento": "1970-02-02",
+      "genero": "M",
+      "id": 1
+    },
+    {
+      "nome": "David Flanagan",
+      "dataNascimento": "1980-12-01",
+      "genero": "F",
+      "id": 6
+    }
+  ],
+  "livros": [
+    {
+      "nome": "JavaScript: The Good Parts",
+      "isbn": "9780596517748",
+      "autores": [
+        6
+      ],
+      "paginas": 75,
+      "preco": 120.5,
+      "imagem": "https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg",
+      "id": 1
+    },
+    {
+      "nome": "JavaScript: The Definitive Guide",
+      "isbn": "0596805527",
+      "autores": [
+        1,
+        6
+      ],
+      "paginas": 1078,
+      "preco": 150.2,
+      "imagem": "https://3.bp.blogspot.com/-oNLbbWjayu0/V-oHgHbQ0zI/AAAAAAAAAeY/RHLShtS55mowPHRVvYai5UdTeZBWe1i5ACLcB/s1600/Screenshot%2B%252886%2529.png",
+      "id": 2
+    }
+  ]
+}

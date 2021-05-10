@@ -1,0 +1,25 @@
+Criar tabela usuários = "usuario"
+Campos = id, nome, login, senha, status (A|I)
+
+Tela login "index.php"
+Campo de login e senha
+
+Validar o login, senha e se o status = A
+Sucesso direcionar para tela painel.php onde irá mostrar apenas o menu
+Erro direicionar para index.php e exibir mensagem de erro:
+	- Usuário ou senha inválida!
+	- Usuário está inativo!
+-----------------------------------------------------------------------
+Implementar header nos CRUDs
+	- Cadastro:
+		- Sucesso direciona para tela de listar
+		- Erro direciona para tela de cadastro
+		
+	- Alterar:
+		- Sucesso direciona para tela de listar
+		- Erro direciona para tela de alterar *Tomar cuidado no retorno*
+		
+	- Excluir:
+		- Sucesso direciona para tela de listar
+		- Erro direciona para tela de listar
+		

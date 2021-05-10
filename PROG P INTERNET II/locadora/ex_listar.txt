@@ -1,0 +1,19 @@
+- distribuidor								- cliente_bonus
+	- id										- id
+	- razao_social								- id_cliente
+	- cnpj										- nome (cliente)
+												- locacao_gratis
+- midia											- desconto
+	- id
+	- titulo								- locacao
+	- tipo_midia								- id
+	- classificacao								- id_cliente
+	- id_distribuidor							- nome (cliente)
+	- razao_social (distribuidor)				- id_midia
+												- titulo (midia)
+- cliente_dependente							- data_coleta
+	- id
+	- nome
+	- cpf
+	- id_cliente
+	- nome (cliente)

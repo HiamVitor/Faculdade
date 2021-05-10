@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Livros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let livro of livros"
+                      #slidingItem>
+      <ion-item-options side="start"
+                        color="warning">
+        <ion-item-option (click)="editar(livro, slidingItem)">
+          <ion-icon slot="icon-only"
+                    name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="livro.imagem" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{livro.nome}}</h2>
+          <h3>Autor(es):</h3>
+          <p *ngFor="let autor of livro.autores">
+            {{autor.nome}}
+          </p>
+          <h3>ISBN: <ion-text color="medium">{{livro.isbn}}</ion-text>
+          </h3>
+          <h4>Pág.: <ion-text color="medium">{{livro.paginas}}</ion-text>
+          </h4>
+        </ion-label>
+        <ion-note slot="end"
+                  color="danger">
+          <h4>{{livro.preco | currency:'BRL'}}</h4>
+        </ion-note>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"
+                         (click)="exclusao(livro, slidingItem)">
+          <ion-icon slot="icon-only"
+                    name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button [routerLink]="['cadastro']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
