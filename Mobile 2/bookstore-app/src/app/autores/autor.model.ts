@@ -1,8 +1,8 @@
-import { Genero } from "./genero.enum";
+import { Genero } from './genero.enum';
 
 export class Autor {
-    id?: number;
-    nome: string;
-    dataNascimento: Date;
-    genero: Genero; 
+  id?: number;
+  nome: string;
+  dataNascimento: Date;
+  genero: Genero;
 }

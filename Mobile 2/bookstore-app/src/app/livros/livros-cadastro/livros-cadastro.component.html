@@ -1,87 +1,86 @@
 <ion-header>
-    <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Cadastro de livros</ion-title>
-    </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastro de livros</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-    <form [formGroup]="livrosForm">
-        <ion-item>
-            <ion-label position="floating">Nome: </ion-label>
-            <ion-input formControlName="nome"
-                       type="text">
-            </ion-input>
-            <ion-text color="danger" *ngIf="nome.errors">
-                <small *ngIf="nome.errors.required && (nome.dirty || nome.touched)">
-                    O campo nome é obrigatório
-                </small>
-                <small *ngIf="nome.errors.minlength && (nome.dirty || nome.touched)">
-                    O campo nome deve conter no mínimo {{nome.errors.minlength.requiredLength}} caracteres
-                </small>
-                <small *ngIf="nome.errors.maxlength && (nome.dirty || nome.touched)">
-                    O campo nome deve conter no máximo {{nome.errors.maxlength.requiredLength}} caracteres
-                </small>
-            </ion-text>    
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">ISBN: </ion-label>
-            <ion-input formControlName="isbn"
-                       type="text">
-            </ion-input>
-            <ion-text color="danger" *ngIf="isbn.errors">
-                <small *ngIf="isbn.errors.required && (isbn.dirty || isbn.touched)">
-                    O campo ISBN é obrigatório
-                </small>
-                <small *ngIf="isbn.errors.minlength && (isbn.dirty || isbn.touched)">
-                    O campo isbn deve conter no mínimo {{isbn.errors.minlength.requiredLength}} caracteres
-                </small>
-                <small *ngIf="isbn.errors.maxlength && (isbn.dirty || isbn.touched)">
-                    O campo isbn deve conter no máximo {{isbn.errors.maxlength.requiredLength}} caracteres
-                </small>
-            </ion-text>    
-        </ion-item>
-        <ion-item>
-            <ion-label>Autores</ion-label>
-            <ion-select formControlName="autores"
-                        multiple
-                        ok-text="Okay"
-                        cancel-text="Nah">
-                <ion-select-option *ngFor="let autor of autoresLista" [value]="autor.id">{{autor.nome}}</ion-select-option>
-            </ion-select>
-            <ion-text color="danger" *ngIf="autores.errors">
-                <small *ngIf="autores.errors[0] && (autores.dirty || autores.touched)">
-                    {{autores.errors[0]}}
-                </small>
-            </ion-text>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Preço: </ion-label>
-            <ion-input formControlName="preco"
-                       type="number">
-            </ion-input>
-        </ion-item>
+  <form [formGroup]="livrosForm">
+    <ion-item>
+      <ion-label position="floating">Nome: </ion-label>
+      <ion-input formControlName="nome" type="text"> </ion-input>
+      <ion-text color="danger" *ngIf="nome.errors">
+        <small *ngIf="nome.errors.required && (nome.dirty || nome.touched)">
+          O campo nome é obrigatório
+        </small>
+        <small *ngIf="nome.errors.minlength && (nome.dirty || nome.touched)">
+          O campo nome deve conter no mínimo
+          {{ nome.errors.minlength.requiredLength }} caracteres
+        </small>
+        <small *ngIf="nome.errors.maxlength && (nome.dirty || nome.touched)">
+          O campo nome deve conter no máximo
+          {{ nome.errors.maxlength.requiredLength }} caracteres
+        </small>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">ISBN: </ion-label>
+      <ion-input formControlName="isbn" type="text"> </ion-input>
+      <ion-text color="danger" *ngIf="isbn.errors">
+        <small *ngIf="isbn.errors.required && (isbn.dirty || isbn.touched)">
+          O campo ISBN é obrigatório
+        </small>
+        <small *ngIf="isbn.errors.minlength && (isbn.dirty || isbn.touched)">
+          O campo isbn deve conter no mínimo
+          {{ isbn.errors.minlength.requiredLength }} caracteres
+        </small>
+        <small *ngIf="isbn.errors.maxlength && (isbn.dirty || isbn.touched)">
+          O campo isbn deve conter no máximo
+          {{ isbn.errors.maxlength.requiredLength }} caracteres
+        </small>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Autores</ion-label>
+      <ion-select
+        formControlName="autores"
+        multiple
+        ok-text="Okay"
+        cancel-text="Nah"
+      >
+        <ion-select-option
+          *ngFor="let autor of autoresLista"
+          [value]="autor.id"
+          >{{ autor.nome }}</ion-select-option
+        >
+      </ion-select>
+      <ion-text color="danger" *ngIf="autores.errors">
+        <small *ngIf="autores.errors[0] && (autores.dirty || autores.touched)">
+          {{ autores.errors[0] }}
+        </small>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Preço: </ion-label>
+      <ion-input formControlName="preco" type="number"> </ion-input>
+    </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Páginas: </ion-label>
-            <ion-input formControlName="paginas"
-                       type="number">
-            </ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label position="floating">Páginas: </ion-label>
+      <ion-input formControlName="paginas" type="number"> </ion-input>
+    </ion-item>
 
-        <ion-item>
-            <ion-label position="floating">Imagem (URL): </ion-label>
-            <ion-input formControlName="imagem"
-                       type="text">
-            </ion-input>
-        </ion-item>
+    <ion-item>
+      <ion-label position="floating">Imagem (URL): </ion-label>
+      <ion-input formControlName="imagem" type="text"> </ion-input>
+    </ion-item>
 
-        <ion-fab vertical="bottom"
-                 horizontal="end">
-            <ion-fab-button (click)="salvar()" [disabled]="!livrosForm.valid">
-                <ion-icon name="checkmark-outline"></ion-icon>
-            </ion-fab-button>
-        </ion-fab>
-    </form>
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="salvar()" [disabled]="!livrosForm.valid">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </form>
 </ion-content>

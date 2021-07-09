@@ -1,0 +1,21 @@
+admin
+123
+
+"INSERT INTO usuario VALUES (null, 'admin', '202cb962ac59075b964b07152d234b70')";
+
+admin
+123
+
+$login = $_POST['login'];
+$senha = md5($_POST['senha']);
+
+"SELECT * FROM usuario WHERE login = '{$login}' AND senha = '{$senha}'";
+
+
+- Validações de login e senha devem ter as senhas encriptadas no nosso banco de dados.
+- Vocês podem utilizar cookie ou session para validar acesso do usuário as telas internas.
+	- Se perder a sessão deve redirecionar o usuário para tela de login.
+
+- md5 ou base64
+- session ou cookie
+- header

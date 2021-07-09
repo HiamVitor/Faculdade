@@ -1,0 +1,9 @@
+br\com\bookstore\api\autor\Autor.class
+br\com\bookstore\api\livro\Livro.class
+br\com\bookstore\api\NewCrossOriginResourceSharingFilter.class
+br\com\bookstore\api\livro\LivroResource.class
+br\com\bookstore\api\resources\JavaEE8Resource.class
+br\com\bookstore\api\autor\AutorResource.class
+br\com\bookstore\api\JAXRSConfiguration.class
+br\com\bookstore\api\autor\Genero.class
+br\com\bookstore\api\HelloWolrd\HelloWorldResource.class

@@ -13,19 +13,18 @@
       <ion-label>{{autor.nome}}</ion-label>
       <ion-buttons>
         <ion-button color="primary" [routerLink]="['edicao', autor.id]">
-          <ion-icon name="create" slot="icon-only"></ion-icon> 
+          <ion-icon name="create" slot="icon-only"></ion-icon>
         </ion-button>
         <ion-button color="primary" (click)="confirmarExclusao(autor)">
-          <ion-icon name="trash"  slot="icon-only"></ion-icon>
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
   </ion-list>
- 
+
   <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button [routerLink]="['cadastro']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>

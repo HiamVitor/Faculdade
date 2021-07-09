@@ -1,14 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
-import { LivrosPageRoutingModule } from './livros-routing.module';
-
-import { LivrosPage } from './livros.page';
 import { LivrosCadastroComponent } from './livros-cadastro/livros-cadastro.component';
+import { LivrosPageRoutingModule } from './livros-routing.module';
+import { LivrosPage } from './livros.page';
 
 @NgModule({
   imports: [
@@ -17,8 +14,8 @@ import { LivrosCadastroComponent } from './livros-cadastro/livros-cadastro.compo
     CommonModule,
     IonicModule,
     LivrosPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  declarations: [LivrosPage, LivrosCadastroComponent]
+  declarations: [LivrosPage, LivrosCadastroComponent],
 })
 export class LivrosPageModule {}

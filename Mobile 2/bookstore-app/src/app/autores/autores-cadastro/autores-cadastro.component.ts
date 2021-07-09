@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+
 import { Autor } from '../autor.model';
 import { AutorService } from '../autor.service';
 import { Genero } from '../genero.enum';

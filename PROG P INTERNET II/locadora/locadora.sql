@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cliente`
+-- Estrutura para tabela `clientes`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
   `nome` varchar(150) NOT NULL,
   `endereco` varchar(150) NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `cliente`
+-- Fazendo dump de dados para tabela `clientes`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `endereco`, `telefone`, `celular`, `cpf`, `foto`) VALUES
+INSERT INTO `clientes` (`id`, `nome`, `endereco`, `telefone`, `celular`, `cpf`, `foto`) VALUES
 (1, 'Cristiano', 'Rua teste', '4832145874', '48965325741', '25165874214', NULL),
 (2, 'Flavia', 'Rua exemplo', '4896524587', '48356587452', '26587568754', NULL),
 (3, 'Alvaro', 'Rua body', '4885658745', '48985654871', '22354877414', NULL),
@@ -212,9 +212,9 @@ INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `status`) VALUES
 --
 
 --
--- Índices de tabela `cliente`
+-- Índices de tabela `clientes`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cpf_UNIQUE` (`cpf`);
 
@@ -262,9 +262,9 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de tabela `cliente`
+-- AUTO_INCREMENT de tabela `clientes`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --

@@ -1,0 +1,8 @@
+- Campos utilizam date time separar em input date e input time
+	Alterar
+	
+- Telas midia, cliente e cliente dependente deve permitir enviar foto
+	- Criar o campo para foto no banco (gravar no banco o nome do arquivo)
+	- Upload da imagem deve ser separado em pastas respectivas (criar as pastas img/midia, img/cliente, img/dependente).
+	- Na tela de alterar exibir imagem se existir
+	- Na tela de alterar se não for selecionado uma imagem, não pode ser feito o upload nem atualização no nome do arquivo

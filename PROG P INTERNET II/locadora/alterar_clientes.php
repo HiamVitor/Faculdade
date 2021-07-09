@@ -25,7 +25,7 @@
 			<?php
 				$id = $_GET['id'];
 				
-				$sql = "SELECT * FROM cliente WHERE id = {$id}";
+				$sql = "SELECT * FROM clientes WHERE id = {$id}";
 				$query = mysqli_query($conexao, $sql);
 				$item = mysqli_fetch_array($query, MYSQLI_ASSOC);
 			?>

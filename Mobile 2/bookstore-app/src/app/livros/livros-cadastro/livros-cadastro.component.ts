@@ -13,7 +13,6 @@ import { LivroService } from '../livro.service';
   styleUrls: ['./livros-cadastro.component.scss'],
 })
 export class LivrosCadastroComponent implements OnInit {
-
   livroId: number;
   livrosForm: FormGroup;
 
@@ -24,7 +23,7 @@ export class LivrosCadastroComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private livroService: LivroService,
     private autorService: AutorService,
-    private router: Router,
+    private router: Router
   ) {
     let livro = {
       id: null,
@@ -32,13 +31,13 @@ export class LivrosCadastroComponent implements OnInit {
       isbn: '',
       autores: [] as number[],
       paginas: 0,
-      preco: 0, 
-      imagem: ''
+      preco: 0,
+      imagem: '',
     };
     this.autorService.getAutores().subscribe(
       (dados) => {
         this.autoresLista = dados;
-      }, 
+      },
       (erro) => {
         console.error(erro);
       }
@@ -48,14 +47,12 @@ export class LivrosCadastroComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id) {
+    if (id) {
       this.livroId = parseInt(id);
-      this.livroService
-        .getLivro(this.livroId)
-        .subscribe((livroViewModel) => {
-          this.initializaFormulario(livroViewModel as any);
-          this.autores.setValue(livroViewModel.autores);
-        });
+      this.livroService.getLivro(this.livroId).subscribe((livroViewModel) => {
+        this.initializaFormulario(livroViewModel as any);
+        this.autores.setValue(livroViewModel.autores);
+      });
     }
   }
 
@@ -70,26 +67,35 @@ export class LivrosCadastroComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(150),
-      ]),      
-      autores: new FormControl(livro.autores, (control)=>{ return control.value.length ? null: ["O livro deve possuir pelo menos um autor"]; }),
+      ]),
+      autores: new FormControl(livro.autores, (control) => {
+        return control.value.length
+          ? null
+          : ['O livro deve possuir pelo menos um autor'];
+      }),
       paginas: new FormControl(livro.paginas),
       preco: new FormControl(livro.preco),
-      imagem: new FormControl(livro.imagem)
-    })
+      imagem: new FormControl(livro.imagem),
+    });
   }
 
   salvar() {
-    const livro: LivroViewModel = {...this.livrosForm.value, id: this.livroId}
+    const livro: LivroViewModel = {
+      ...this.livrosForm.value,
+      id: this.livroId,
+    };
     this.livroService.salvar(livro).subscribe(
       () => this.router.navigate(['livros']),
       (erro) => {
         console.error(erro);
-        this.toastController.create({
-          message: `Não foi possível salvar o livro ${livro.nome}`,
-          duration: 5000,
-          keyboardClose: true,
-          color: 'danger'
-        }).then(t => t.present());
+        this.toastController
+          .create({
+            message: `Não foi possível salvar o livro ${livro.nome}`,
+            duration: 5000,
+            keyboardClose: true,
+            color: 'danger',
+          })
+          .then((t) => t.present());
       }
     );
   }

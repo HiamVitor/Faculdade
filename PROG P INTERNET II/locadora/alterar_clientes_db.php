@@ -19,7 +19,7 @@
 		}
 	}
 	
-	$sql = "UPDATE cliente SET nome = '{$nome}', endereco = '{$endereco}', telefone = '{$telefone}', celular = '{$celular}', cpf = '{$cpf}' {$arquivo} WHERE id = {$id}";
+	$sql = "UPDATE clientes SET nome = '{$nome}', endereco = '{$endereco}', telefone = '{$telefone}', celular = '{$celular}', cpf = '{$cpf}' {$arquivo} WHERE id = {$id}";
 	
 	$query = mysqli_query($conexao, $sql);
 	if($query) {

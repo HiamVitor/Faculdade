@@ -7,16 +7,16 @@ import { AutoresPage } from './autores.page';
 const routes: Routes = [
   {
     path: '',
-    component: AutoresPage
+    component: AutoresPage,
   },
   {
     path: 'cadastro',
-    component: AutoresCadastroComponent
+    component: AutoresCadastroComponent,
   },
   {
     path: 'edicao/:id',
-    component: AutoresCadastroComponent
-  }
+    component: AutoresCadastroComponent,
+  },
 ];
 
 @NgModule({

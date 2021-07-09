@@ -1,0 +1,7 @@
+{"WFLYCTL0080: Failed services" => {"jboss.persistenceunit.\"bookstore-api-1.0.0.war#BookstorePU\"" => "javax.persistence.PersistenceException: [PersistenceUnit: BookstorePU] Unable to build Hibernate SessionFactory
+    Caused by: javax.persistence.PersistenceException: [PersistenceUnit: BookstorePU] Unable to build Hibernate SessionFactory
+    Caused by: org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+    Caused by: java.sql.SQLException: javax.resource.ResourceException: IJ000453: Unable to get managed connection for java:jboss/datasources/BookstoreDS
+    Caused by: javax.resource.ResourceException: IJ000453: Unable to get managed connection for java:jboss/datasources/BookstoreDS
+    Caused by: javax.resource.ResourceException: IJ031084: Unable to create connection
+    Caused by: org.postgresql.util.PSQLException: O tipo de autenticação 10 não é suportado. Verifique se você configurou o arquivo pg_hba.conf incluindo a subrede ou endereço IP do cliente, e se está utilizando o esquema de autenticação suportado pelo driver."}}

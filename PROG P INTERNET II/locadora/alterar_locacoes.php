@@ -36,7 +36,7 @@
 			<label for="id_cliente">Cliente</label><br>
 			<select name="id_cliente" id="id_cliente">
 			<?php
-				$sql = "SELECT id, nome FROM cliente";
+				$sql = "SELECT id, nome FROM s";
 				$query = mysqli_query($conexao, $sql);
 				while($item = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 			?>

@@ -1,0 +1,23 @@
+- Listem os clientes e exibir uma lista dos dependentes
+	- Se não existir dependentes não exibir o atributo
+	
+[
+	{
+		"id": "1"
+		"nome": "Cristiano"
+		"dependentes": [
+			{
+				"id": "1"
+				"nome": "Anderson"
+			}
+		] 
+	},
+	{
+		"id": "2"
+		"nome": "Flavio"
+	}
+]
+
+- Cadastrar os distribuidores através de JSON
+	- Apagar todos os distribuidores
+	- Gravar todos os enviados no JSON

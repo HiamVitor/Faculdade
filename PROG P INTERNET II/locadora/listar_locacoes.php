@@ -44,7 +44,7 @@
 				<?php
 					$sql = "SELECT l.id, l.id_cliente, l.id_midia, l.data_coleta, c.nome, m.titulo
 							FROM locacao AS l 
-							INNER JOIN cliente AS c ON (l.id_cliente = c.id) 
+							INNER JOIN clientes AS c ON (l.id_cliente = c.id) 
 							INNER JOIN midia AS m ON (l.id_midia = m.id)";
 					$query = mysqli_query($conexao, $sql);
 					if(!$query) {

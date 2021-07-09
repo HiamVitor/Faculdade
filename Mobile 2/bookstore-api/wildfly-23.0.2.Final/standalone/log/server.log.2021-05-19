@@ -1,0 +1,236 @@
+2021-05-19 21:30:16,310 INFO  [org.jboss.modules] (main) JBoss Modules version 1.11.0.Final
+2021-05-19 21:30:16,764 INFO  [org.jboss.msc] (main) JBoss MSC version 1.4.12.Final
+2021-05-19 21:30:16,777 INFO  [org.jboss.threads] (main) JBoss Threads version 2.4.0.Final
+2021-05-19 21:30:16,904 INFO  [org.jboss.as] (MSC service thread 1-1) WFLYSRV0049: WildFly Full 23.0.2.Final (WildFly Core 15.0.1.Final) starting
+2021-05-19 21:30:16,906 DEBUG [org.jboss.as.config] (MSC service thread 1-1) Configured system properties:
+	awt.toolkit = sun.awt.windows.WToolkit
+	file.encoding = Cp1252
+	file.encoding.pkg = sun.io
+	file.separator = \
+	http.nonProxyHosts = localhost,127.0.0.1,Desktop-Gustavo
+	java.awt.graphicsenv = sun.awt.Win32GraphicsEnvironment
+	java.awt.headless = true
+	java.awt.printerjob = sun.awt.windows.WPrinterJob
+	java.class.path = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\jboss-modules.jar
+	java.class.version = 52.0
+	java.endorsed.dirs = C:\Program Files\Java\jdk1.8.0_261\jre\lib\endorsed
+	java.ext.dirs = C:\Program Files\Java\jdk1.8.0_261\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+	java.home = C:\Program Files\Java\jdk1.8.0_261\jre
+	java.io.tmpdir = C:\Users\Gustavo\AppData\Local\Temp\
+	java.library.path = C:\Program Files\Java\jdk1.8.0_261\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Python39\Scripts\;C:\Python39\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Gradle\gradle-6.7\bin;C:\Program Files\Java\jdk1.8.0_271\bin;C:\Users\Gustavo\AppData\Local\Android\Sdk\platforms;C:\Users\Gustavo\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Java\jdk1.8.0_241\bin;C:\Program Files\Maven\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Gustavo\bin\Sencha\Cmd;C:\Users\Gustavo\AppData\Local\Microsoft\WindowsApps;C:\Users\Gustavo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Gustavo\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2\bin;;C:\Program Files\Java\jdk1.8.0_271\bin;C:\Users\Gustavo\.dotnet\tools;C:\Users\Gustavo\AppData\Roaming\npm;C:\Users\Gustavo\AppData\Local\Yarn\bin;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;.
+	java.net.preferIPv4Stack = true
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 1.8.0_261-b12
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 1.8
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = http://java.oracle.com/
+	java.vendor.url.bug = http://bugreport.sun.com/bugreport/
+	java.version = 1.8.0_261
+	java.vm.info = mixed mode
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 1.8
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 25.261-b12
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	jboss.home.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final
+	jboss.host.name = desktop-gustavo
+	jboss.http.port = 8080
+	jboss.management.http.port = 9990
+	jboss.modules.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\modules
+	jboss.modules.system.pkgs = org.jboss.byteman
+	jboss.node.name = desktop-gustavo
+	jboss.qualified.host.name = desktop-gustavo
+	jboss.server.base.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone
+	jboss.server.config.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration
+	jboss.server.data.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data
+	jboss.server.deploy.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data\content
+	jboss.server.log.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\log
+	jboss.server.name = desktop-gustavo
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\tmp
+	line.separator = 
+
+	logging.configuration = file:C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration/logging.properties
+	module.path = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\modules
+	org.jboss.boot.log.file = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\log\server.log
+	org.jboss.resolver.warning = true
+	os.arch = amd64
+	os.name = Windows 10
+	os.version = 10.0
+	path.separator = ;
+	program.name = standalone.bat
+	sun.arch.data.model = 64
+	sun.boot.class.path = C:\Program Files\Java\jdk1.8.0_261\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_261\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_261\jre\classes
+	sun.boot.library.path = C:\Program Files\Java\jdk1.8.0_261\jre\bin
+	sun.cpu.endian = little
+	sun.cpu.isalist = amd64
+	sun.desktop = windows
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\jboss-modules.jar -mp C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\modules org.jboss.as.standalone -Djboss.home.dir=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final -c standalone-full.xml
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = Cp1252
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = 
+	user.country = BR
+	user.dir = C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\bin
+	user.home = C:\Users\Gustavo
+	user.language = pt
+	user.name = Gustavo
+	user.script = 
+	user.timezone = America/Sao_Paulo
+	user.variant = 
+2021-05-19 21:30:16,908 DEBUG [org.jboss.as.config] (MSC service thread 1-1) VM Arguments: -Dprogram.name=standalone.bat -Xms128m -Xmx512m -Dhttp.nonProxyHosts=localhost,127.0.0.1,Desktop-Gustavo -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true -Djboss.management.http.port=9990 -Djboss.http.port=8080 -Dorg.jboss.boot.log.file=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\log\server.log -Dlogging.configuration=file:C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration/logging.properties 
+2021-05-19 21:30:17,708 INFO  [org.wildfly.security] (ServerService Thread Pool -- 29) ELY00001: WildFly Elytron version 1.15.3.Final
+2021-05-19 21:30:18,052 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 5) WFLYCTL0033: Extension 'security' is deprecated and may not be supported in future versions
+2021-05-19 21:30:18,307 INFO  [org.jboss.as.controller.management-deprecated] (Controller Boot Thread) WFLYCTL0028: Attribute 'security-realm' in the resource at address '/core-service=management/management-interface=http-interface' is deprecated, and may be removed in a future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2021-05-19 21:30:18,326 INFO  [org.jboss.as.controller.management-deprecated] (ServerService Thread Pool -- 16) WFLYCTL0028: Attribute 'security-realm' in the resource at address '/subsystem=undertow/server=default-server/https-listener=https' is deprecated, and may be removed in a future version. See the attribute description in the output of the read-resource-description operation to learn more about the deprecation.
+2021-05-19 21:30:18,360 INFO  [org.jboss.as.server.deployment.scanner] (DeploymentScanner-threads - 1) WFLYDS0004: Found bookstore-api-1.0.0.war in deployment directory. To trigger deployment create a file called bookstore-api-1.0.0.war.dodeploy
+2021-05-19 21:30:18,403 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2021-05-19 21:30:18,423 INFO  [org.xnio] (MSC service thread 1-5) XNIO version 3.8.4.Final
+2021-05-19 21:30:18,431 INFO  [org.xnio.nio] (MSC service thread 1-5) XNIO NIO Implementation Version 3.8.4.Final
+2021-05-19 21:30:18,465 INFO  [org.wildfly.extension.microprofile.config.smallrye._private] (ServerService Thread Pool -- 69) WFLYCONF0001: Activating WildFly MicroProfile Config Subsystem
+2021-05-19 21:30:18,470 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 80) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
+2021-05-19 21:30:18,475 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 57) WFLYCLINF0001: Activating Infinispan subsystem.
+2021-05-19 21:30:18,483 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 72) WFLYNAM0001: Activating Naming Subsystem
+2021-05-19 21:30:18,485 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 78) WFLYSEC0002: Activating Security Subsystem
+2021-05-19 21:30:18,489 INFO  [org.wildfly.extension.microprofile.jwt.smallrye._private] (ServerService Thread Pool -- 70) WFLYJWT0001: Activating WildFly MicroProfile JWT Subsystem
+2021-05-19 21:30:18,496 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 59) WFLYRS0016: RESTEasy version 3.15.1.Final
+2021-05-19 21:30:18,497 INFO  [org.wildfly.extension.health] (ServerService Thread Pool -- 55) WFLYHEALTH0001: Activating Base Health Subsystem
+2021-05-19 21:30:18,498 INFO  [org.jboss.as.connector] (MSC service thread 1-4) WFLYJCA0009: Starting Jakarta Connectors Subsystem (WildFly/IronJacamar 1.4.27.Final)
+2021-05-19 21:30:18,500 INFO  [org.wildfly.iiop.openjdk] (ServerService Thread Pool -- 56) WFLYIIOP0001: Activating IIOP Subsystem
+2021-05-19 21:30:18,504 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 82) WFLYWS0002: Activating WebServices Extension
+2021-05-19 21:30:18,512 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 64) WFLYJSF0007: Activated the following Jakarta Server Faces Implementations: [main]
+2021-05-19 21:30:18,512 INFO  [org.jboss.as.security] (MSC service thread 1-6) WFLYSEC0001: Current PicketBox version=5.0.3.Final-redhat-00007
+2021-05-19 21:30:18,513 INFO  [org.wildfly.extension.metrics] (ServerService Thread Pool -- 68) WFLYMETRICS0001: Activating Base Metrics Subsystem
+2021-05-19 21:30:18,514 INFO  [org.wildfly.extension.microprofile.opentracing] (ServerService Thread Pool -- 71) WFLYTRACEXT0001: Activating MicroProfile OpenTracing Subsystem
+2021-05-19 21:30:18,541 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0003: Undertow 2.2.5.Final starting
+2021-05-19 21:30:18,591 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 47) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 1.4)
+2021-05-19 21:30:18,612 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0018: Started Driver service with driver-name = h2
+2021-05-19 21:30:18,618 INFO  [org.jboss.as.naming] (MSC service thread 1-8) WFLYNAM0003: Starting Naming Service
+2021-05-19 21:30:18,628 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-7) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+2021-05-19 21:30:18,718 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-4) WFLYELY00023: KeyStore file 'C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration\application.keystore' does not exist. Used blank.
+2021-05-19 21:30:18,735 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 81) WFLYUT0014: Creating file handler for path 'C:\Users\Gustavo\Documents\wildfly-23.0.2.Final/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
+2021-05-19 21:30:18,768 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-4) WFLYELY01084: KeyStore C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration\application.keystore not found, it will be auto generated on first use with a self-signed certificate for host localhost
+2021-05-19 21:30:19,050 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 58) WFLYIO001: Worker 'default' has auto-configured to 24 IO threads with 192 max task threads based on your 12 available processors
+2021-05-19 21:30:19,082 INFO  [org.jboss.as.ejb3] (MSC service thread 1-8) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 192 (per class), which is derived from thread worker pool sizing.
+2021-05-19 21:30:19,082 INFO  [org.jboss.as.ejb3] (MSC service thread 1-3) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 48 (per class), which is derived from the number of CPUs on this host.
+2021-05-19 21:30:19,119 INFO  [org.jboss.remoting] (MSC service thread 1-5) JBoss Remoting version 5.0.20.Final
+2021-05-19 21:30:19,131 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0012: Started server default-server.
+2021-05-19 21:30:19,134 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) Queuing requests.
+2021-05-19 21:30:19,137 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0018: Host default-host starting
+2021-05-19 21:30:19,200 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0006: Undertow HTTP listener default listening on 127.0.0.1:8080
+2021-05-19 21:30:19,223 INFO  [org.jboss.as.ejb3] (MSC service thread 1-5) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2021-05-19 21:30:19,292 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-6) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2021-05-19 21:30:19,388 INFO  [org.jboss.as.patching] (MSC service thread 1-1) WFLYPAT0050: WildFly Full cumulative patch ID is: base, one-off patches include: none
+2021-05-19 21:30:19,395 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-6) WFLYMSGAMQ0001: AIO wasn't located on this platform, it will fall back to using pure Java NIO.
+2021-05-19 21:30:19,405 WARN  [org.jboss.as.domain.management.security] (MSC service thread 1-3) WFLYDM0111: Keystore C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\configuration\application.keystore not found, it will be auto generated on first use with a self signed certificate for host localhost
+2021-05-19 21:30:19,410 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-5) WFLYDS0013: Started FileSystemDeploymentService for directory C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\deployments
+2021-05-19 21:30:19,419 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "bookstore-api-1.0.0.war" (runtime-name: "bookstore-api-1.0.0.war")
+2021-05-19 21:30:19,445 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTPS listener https listening on 127.0.0.1:8443
+2021-05-19 21:30:19,487 INFO  [org.wildfly.iiop.openjdk] (MSC service thread 1-2) WFLYIIOP0009: CORBA ORB Service started
+2021-05-19 21:30:19,500 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221000: live Message Broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data\activemq\journal,bindingsDirectory=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data\activemq\bindings,largeMessagesDirectory=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data\activemq\largemessages,pagingDirectory=C:\Users\Gustavo\Documents\wildfly-23.0.2.Final\standalone\data\activemq\paging)
+2021-05-19 21:30:19,545 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221013: Using NIO Journal
+2021-05-19 21:30:19,567 INFO  [org.jboss.ws.common.management] (MSC service thread 1-7) JBWS022052: Starting JBossWS 5.4.3.Final (Apache CXF 3.3.10) 
+2021-05-19 21:30:19,666 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2021-05-19 21:30:19,667 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221043: Protocol module found: [artemis-amqp-protocol]. Adding protocol support for: AMQP
+2021-05-19 21:30:19,667 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221043: Protocol module found: [artemis-hornetq-protocol]. Adding protocol support for: HORNETQ
+2021-05-19 21:30:19,667 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221043: Protocol module found: [artemis-stomp-protocol]. Adding protocol support for: STOMP
+2021-05-19 21:30:19,730 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221034: Waiting indefinitely to obtain live lock
+2021-05-19 21:30:19,730 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221035: Live Server Obtained live lock
+2021-05-19 21:30:19,908 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) WFLYJPA0002: Read persistence.xml for my_persistence_unit
+2021-05-19 21:30:20,118 INFO  [org.jipijapa] (MSC service thread 1-5) JIPIORMV53020253: Second level cache enabled for bookstore-api-1.0.0.war#my_persistence_unit
+2021-05-19 21:30:20,199 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221003: Deploying ANYCAST queue jms.queue.ExpiryQueue on address jms.queue.ExpiryQueue
+2021-05-19 21:30:20,207 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221003: Deploying ANYCAST queue jms.queue.DLQ on address jms.queue.DLQ
+2021-05-19 21:30:20,258 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-6) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+2021-05-19 21:30:20,258 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-8) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+2021-05-19 21:30:20,258 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-5) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor-throughput acceptor
+2021-05-19 21:30:20,258 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-7) WFLYMSGAMQ0016: Registered HTTP upgrade for activemq-remoting protocol handled by http-acceptor acceptor
+2021-05-19 21:30:20,281 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) WFLYWELD0003: Processing weld deployment bookstore-api-1.0.0.war
+2021-05-19 21:30:20,392 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-4) HV000001: Hibernate Validator 6.0.22.Final
+2021-05-19 21:30:20,409 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221007: Server is now live
+2021-05-19 21:30:20,409 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 84) AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.16.0 [default, nodeID=9984e43f-b379-11eb-866b-40b0767bb1c3] 
+2021-05-19 21:30:20,423 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 84) WFLYMSGAMQ0002: Bound messaging object to jndi name java:/ConnectionFactory
+2021-05-19 21:30:20,439 INFO  [org.wildfly.extension.messaging-activemq] (ServerService Thread Pool -- 85) WFLYMSGAMQ0002: Bound messaging object to jndi name java:jboss/exported/jms/RemoteConnectionFactory
+2021-05-19 21:30:20,496 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-3) WFLYJCA0007: Registered connection factory java:/JmsXA
+2021-05-19 21:30:20,558 INFO  [org.apache.activemq.artemis.ra] (MSC service thread 1-3) AMQ151007: Resource adaptor started
+2021-05-19 21:30:20,560 INFO  [org.jboss.as.connector.services.resourceadapters.ResourceAdapterActivatorService$ResourceAdapterActivator] (MSC service thread 1-3) IJ020002: Deployed: file://RaActivatoractivemq-ra
+2021-05-19 21:30:20,562 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-2) WFLYJCA0002: Bound Jakarta Connectors ConnectionFactory [java:/JmsXA]
+2021-05-19 21:30:20,562 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-1) WFLYJCA0118: Binding connection factory named java:/JmsXA to alias java:jboss/DefaultJMSConnectionFactory
+2021-05-19 21:30:20,943 INFO  [io.jaegertracing.internal.JaegerTracer] (MSC service thread 1-4) No shutdown hook registered: Please call close() manually on application shutdown.
+2021-05-19 21:30:20,943 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 86) ISPN000128: Infinispan version: Infinispan 'Corona Extra' 11.0.9.Final
+2021-05-19 21:30:20,982 INFO  [org.jipijapa] (MSC service thread 1-2) JIPIORMV53020253: Second level cache enabled for bookstore-api-1.0.0.war#my_persistence_unit
+2021-05-19 21:30:20,991 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 86) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:20,997 INFO  [org.infinispan.CONFIG] (MSC service thread 1-3) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+2021-05-19 21:30:20,999 INFO  [org.infinispan.CONFIG] (MSC service thread 1-3) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+2021-05-19 21:30:21,024 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 86) HHH000204: Processing PersistenceUnitInfo [
+	name: my_persistence_unit
+	...]
+2021-05-19 21:30:21,064 INFO  [org.jboss.weld.Version] (MSC service thread 1-2) WELD-000900: 3.1.6 (Final)
+2021-05-19 21:30:21,134 INFO  [org.infinispan.PERSISTENCE] (ServerService Thread Pool -- 85) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+2021-05-19 21:30:21,142 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 86) HHH000412: Hibernate Core {5.3.20.Final}
+2021-05-19 21:30:21,144 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 86) HHH000206: hibernate.properties not found
+2021-05-19 21:30:21,333 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 86) HCANN000001: Hibernate Commons Annotations {5.0.5.Final}
+2021-05-19 21:30:21,344 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 85) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+2021-05-19 21:30:21,452 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 86) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:21,660 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 86) HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-19 21:30:21,731 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 86) Envers integration enabled? : true
+2021-05-19 21:30:22,882 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 84) RESTEASY002225: Deploying javax.ws.rs.core.Application: class br.com.bookstore.api.JAXRSConfiguration$Proxy$_$$_WeldClientProxy
+2021-05-19 21:30:22,940 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0021: Registered web context: '/bookstore-api-1.0.0' for server 'default-server'
+2021-05-19 21:30:23,033 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 48) WFLYSRV0010: Deployed "bookstore-api-1.0.0.war" (runtime-name : "bookstore-api-1.0.0.war")
+2021-05-19 21:30:23,077 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2021-05-19 21:30:23,079 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 23.0.2.Final (WildFly Core 15.0.1.Final) started in 7281ms - Started 509 of 690 services (365 services are lazy, passive or on-demand)
+2021-05-19 21:30:23,082 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2021-05-19 21:30:23,082 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2021-05-19 21:30:28,087 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0022: Unregistered web context: '/bookstore-api-1.0.0' from server 'default-server'
+2021-05-19 21:30:28,114 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 36) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:28,116 INFO  [org.hibernate.orm.beans] (ServerService Thread Pool -- 36) HHH10005004: Stopping BeanContainer : org.hibernate.resource.beans.container.internal.CdiBeanContainerExtendedAccessImpl@3def785e
+2021-05-19 21:30:28,119 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 36) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:28,145 INFO  [org.infinispan.manager.DefaultCacheManager] (ServerService Thread Pool -- 36) Stopping cache manager null on null
+2021-05-19 21:30:28,146 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment bookstore-api-1.0.0.war (runtime-name: bookstore-api-1.0.0.war) in 64ms
+2021-05-19 21:30:28,149 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "bookstore-api-1.0.0.war" (runtime-name: "bookstore-api-1.0.0.war")
+2021-05-19 21:30:28,215 INFO  [org.jboss.as.jpa] (MSC service thread 1-7) WFLYJPA0002: Read persistence.xml for my_persistence_unit
+2021-05-19 21:30:28,253 INFO  [org.jipijapa] (MSC service thread 1-2) JIPIORMV53020253: Second level cache enabled for bookstore-api-1.0.0.war#my_persistence_unit
+2021-05-19 21:30:28,259 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) WFLYWELD0003: Processing weld deployment bookstore-api-1.0.0.war
+2021-05-19 21:30:28,281 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 36) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:28,281 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 36) HHH000204: Processing PersistenceUnitInfo [
+	name: my_persistence_unit
+	...]
+2021-05-19 21:30:28,331 INFO  [io.jaegertracing.internal.JaegerTracer] (MSC service thread 1-3) No shutdown hook registered: Please call close() manually on application shutdown.
+2021-05-19 21:30:28,337 INFO  [org.jipijapa] (MSC service thread 1-1) JIPIORMV53020253: Second level cache enabled for bookstore-api-1.0.0.war#my_persistence_unit
+2021-05-19 21:30:28,382 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 36) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:30:28,384 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 36) HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-05-19 21:30:28,387 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 36) Envers integration enabled? : true
+2021-05-19 21:30:28,592 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 34) RESTEASY002225: Deploying javax.ws.rs.core.Application: class br.com.bookstore.api.JAXRSConfiguration$Proxy$_$$_WeldClientProxy
+2021-05-19 21:30:28,616 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 34) WFLYUT0021: Registered web context: '/bookstore' for server 'default-server'
+2021-05-19 21:30:28,672 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 2) WFLYSRV0016: Replaced deployment "bookstore-api-1.0.0.war" with deployment "bookstore-api-1.0.0.war"
+2021-05-19 21:55:35,760 INFO  [org.jboss.as.server] (management-handler-thread - 2) WFLYSRV0272: Suspending server
+2021-05-19 21:55:35,762 INFO  [org.jboss.as.ejb3] (management-handler-thread - 2) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2021-05-19 21:55:35,766 INFO  [org.jboss.as.server] (Management Triggered Shutdown) WFLYSRV0241: Shutting down in response to management operation 'shutdown'
+2021-05-19 21:55:35,784 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-6) WFLYMAIL0002: Unbound mail session [java:jboss/mail/Default]
+2021-05-19 21:55:35,785 INFO  [org.wildfly.extension.messaging-activemq] (MSC service thread 1-3) WFLYMSGAMQ0006: Unbound messaging object to jndi name java:/ConnectionFactory
+2021-05-19 21:55:35,787 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 93) WFLYUT0022: Unregistered web context: '/bookstore' from server 'default-server'
+2021-05-19 21:55:35,798 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0019: Host default-host stopping
+2021-05-19 21:55:35,800 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-3) WFLYJCA0119: Unbinding connection factory named java:/JmsXA to alias java:jboss/DefaultJMSConnectionFactory
+2021-05-19 21:55:35,800 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 91) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:55:35,800 INFO  [org.jboss.as.connector.deployment] (MSC service thread 1-5) WFLYJCA0011: Unbound Jakarta Connectors ConnectionFactory [java:/JmsXA]
+2021-05-19 21:55:35,801 INFO  [org.hibernate.orm.beans] (ServerService Thread Pool -- 91) HHH10005004: Stopping BeanContainer : org.hibernate.resource.beans.container.internal.CdiBeanContainerExtendedAccessImpl@7ec0102b
+2021-05-19 21:55:35,801 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 91) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'bookstore-api-1.0.0.war#my_persistence_unit'
+2021-05-19 21:55:35,802 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2021-05-19 21:55:35,803 INFO  [org.infinispan.manager.DefaultCacheManager] (ServerService Thread Pool -- 91) Stopping cache manager null on null
+2021-05-19 21:55:35,808 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment bookstore-api-1.0.0.war (runtime-name: bookstore-api-1.0.0.war) in 37ms
+2021-05-19 21:55:35,810 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2021-05-19 21:55:35,810 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0008: Undertow HTTPS listener https suspending
+2021-05-19 21:55:35,811 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to 127.0.0.1:8443
+2021-05-19 21:55:35,836 INFO  [org.apache.activemq.artemis.ra] (ServerService Thread Pool -- 92) AMQ151003: resource adaptor stopped
+2021-05-19 21:55:35,897 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 93) WFLYCLINF0003: Stopped http-remoting-connector cache from ejb container
+2021-05-19 21:55:35,898 INFO  [org.infinispan.manager.DefaultCacheManager] (ServerService Thread Pool -- 93) Stopping cache manager null on null
+2021-05-19 21:55:35,993 INFO  [org.apache.activemq.artemis.core.server] (ServerService Thread Pool -- 92) AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.16.0 [9984e43f-b379-11eb-866b-40b0767bb1c3] stopped, uptime 25 minutes
+2021-05-19 21:55:35,995 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0008: Undertow HTTP listener default suspending
+2021-05-19 21:55:35,995 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8080
+2021-05-19 21:55:35,996 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0004: Undertow 2.2.5.Final stopping
+2021-05-19 21:55:36,006 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0050: WildFly Full 23.0.2.Final (WildFly Core 15.0.1.Final) stopped in 234ms

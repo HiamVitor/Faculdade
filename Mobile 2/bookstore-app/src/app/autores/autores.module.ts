@@ -1,14 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
-import { AutoresPageRoutingModule } from './autores-routing.module';
-
-import { AutoresPage } from './autores.page';
 import { AutoresCadastroComponent } from './autores-cadastro/autores-cadastro.component';
+import { AutoresPageRoutingModule } from './autores-routing.module';
+import { AutoresPage } from './autores.page';
 
 @NgModule({
   imports: [
@@ -17,8 +14,8 @@ import { AutoresCadastroComponent } from './autores-cadastro/autores-cadastro.co
     CommonModule,
     IonicModule,
     AutoresPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  declarations: [AutoresPage, AutoresCadastroComponent]
+  declarations: [AutoresPage, AutoresCadastroComponent],
 })
 export class AutoresPageModule {}

@@ -1,7 +1,7 @@
 <?php
 	include("conexao.php");
 	
-	$sql = "SELECT * FROM cliente";
+	$sql = "SELECT * FROM clientes";
 	$query = mysqli_query($conexao, $sql);
 	
 	$i = 0;

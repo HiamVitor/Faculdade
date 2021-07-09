@@ -19,11 +19,11 @@
 	$conexao = mysqli_connect('localhost', 'root', '', 'locadora');
 	mysqli_set_charset($conexao, 'utf8');
 	
-	//$sql = "SELECT * FROM cliente LIMIT 1";
+	//$sql = "SELECT * FROM clientes LIMIT 1";
 	//$query = mysqli_query($conexao, $sql);
 	//$item = mysqli_fetch_array($query, MYSQLI_ASSOC);
 	
-	$sql = "SELECT * FROM cliente LIMIT 3";
+	$sql = "SELECT * FROM clientes LIMIT 3";
 	$query = mysqli_query($conexao, $sql);
 	while($dado = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$item[] = $dado;

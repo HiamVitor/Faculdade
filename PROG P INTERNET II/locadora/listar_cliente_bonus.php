@@ -43,7 +43,7 @@
 				<?php
 					$sql = "SELECT cb.id, cb.locacao_gratis, cb.desconto, cb.id_cliente, c.nome
 							FROM cliente_bonus AS cb 
-							INNER JOIN cliente AS c ON (cb.id_cliente = c.id)";
+							INNER JOIN clientes AS c ON (cb.id_cliente = c.id)";
 					$query = mysqli_query($conexao, $sql);
 					if(!$query) {
 				?>

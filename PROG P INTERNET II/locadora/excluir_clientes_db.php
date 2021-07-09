@@ -4,7 +4,7 @@
 	
 	$id = $_POST['id'];
 	
-	$sql = "DELETE FROM cliente WHERE id = {$id}";
+	$sql = "DELETE FROM clientes WHERE id = {$id}";
 	
 	$query = mysqli_query($conexao, $sql);
 	if($query) {

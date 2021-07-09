@@ -19,9 +19,9 @@
 	}
 	
 	if($arquivo) {
-		$sql = "INSERT INTO cliente VALUES (null, '{$nome}', '{$endereco}', '{$telefone}', '{$celular}', '{$cpf}', '{$arquivo}')";
+		$sql = "INSERT INTO clientes VALUES (null, '{$nome}', '{$endereco}', '{$telefone}', '{$celular}', '{$cpf}', '{$arquivo}')";
 	} else {
-		$sql = "INSERT INTO cliente (nome, endereco, telefone, celular, cpf) VALUES ('{$nome}', '{$endereco}', '{$telefone}', '{$celular}', '{$cpf}')";
+		$sql = "INSERT INTO clientes (nome, endereco, telefone, celular, cpf) VALUES ('{$nome}', '{$endereco}', '{$telefone}', '{$celular}', '{$cpf}')";
 	}	
 	
 	$query = mysqli_query($conexao, $sql);

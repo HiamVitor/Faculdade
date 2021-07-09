@@ -38,7 +38,7 @@
 			</thead>
 			<tbody>
 				<?php
-					$sql = "SELECT id, nome, cpf FROM cliente";
+					$sql = "SELECT id, nome, cpf FROM clientes";
 					$query = mysqli_query($conexao, $sql);
 					if(!$query) {
 				?>

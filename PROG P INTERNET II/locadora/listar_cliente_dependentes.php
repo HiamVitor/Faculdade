@@ -43,7 +43,7 @@
 				<?php
 					$sql = "SELECT cd.id, cd.nome, cd.cpf, cd.id_cliente, c.nome AS nome_cliente
 							FROM cliente_dependente AS cd 
-							INNER JOIN cliente AS c ON (cd.id_cliente = c.id)";
+							INNER JOIN clientes AS c ON (cd.id_cliente = c.id)";
 					$query = mysqli_query($conexao, $sql);
 					if(!$query) {
 				?>
