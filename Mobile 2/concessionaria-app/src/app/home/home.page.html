@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Concessionária App</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Bem-vindo ao Concessionária App!
+      </ion-card-title>
+      <ion-card-subtitle>
+        Gerencie sua concessionária utilizando o melhor app do mercado!
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header [routerLink]="['/carros']">
+          <ion-card-title>
+            <ion-icon name="car-sport-outline" class="ion-float-left ion-margin-end"></ion-icon>
+            Carros
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-card-header [routerLink]="['/marcas']">
+          <ion-card-title>
+            <ion-icon name="apps-outline" class="ion-float-left ion-margin-end"></ion-icon>
+            Marcas
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header [routerLink]="['/formas']">
+          <ion-card-title>
+            <ion-icon name="albums-outline" class="ion-float-left ion-margin-end"></ion-icon>
+            Formas de pagamento
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card>
+        <ion-card-header [routerLink]="['/acessorios']">
+          <ion-card-title>
+            <ion-icon name="cube-outline" class="ion-float-left ion-margin-end"></ion-icon>
+            Acessórios
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header [routerLink]="['/condsPagto']">
+          <ion-card-title>
+            <ion-icon name="cash-outline" class="ion-float-left ion-margin-end"></ion-icon>
+            Condições de pagamento
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

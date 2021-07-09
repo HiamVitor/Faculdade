@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Cadastro de formas de pagamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="formaForm">
+      <ion-item>
+          <ion-label position="floating">Nome: </ion-label>
+          <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descrição: </ion-label>
+        <ion-input formControlName="descricao" type="text"></ion-input>
+      </ion-item>
+      <ion-fab vertical="bottom" horizontal="end">
+          <ion-fab-button (click)="salvar()" [disabled]="!formaForm.valid">
+              <ion-icon name="checkmark-outline"></ion-icon>
+          </ion-fab-button>
+      </ion-fab>
+  </form>
+</ion-content>

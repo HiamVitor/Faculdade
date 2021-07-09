@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Cadastro de carros</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="carrosForm">
+        <ion-item>
+            <ion-label position="floating">Nome: </ion-label>
+            <ion-input formControlName="modelo" type="text"> </ion-input>
+            <ion-label position="floating">Ano: </ion-label>
+            <ion-input formControlName="ano" type="text"> </ion-input>
+            <ion-label position="floating">Preço: </ion-label>
+            <ion-input formControlName="preco" type="number"> </ion-input>
+            <ion-label position="floating">Placa: </ion-label>
+            <ion-input formControlName="placa" maxlength="7" type="text"> </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Acessórios</ion-label>
+            <ion-select formControlName="acessorios" multiple ok-text="Ok" cancel-text="Cancelar">
+                <ion-select-option *ngFor="let acessorio of acessoriosLista" [value]="acessorio.id">{{
+                    acessorio.nome
+                }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Formas de Pagto</ion-label>
+            <ion-select formControlName="formas" multiple ok-text="Ok" cancel-text="Cancelar">
+                <ion-select-option *ngFor="let forma of formasLista" [value]="forma.id">{{
+                    forma.nome
+                }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Condições de pagamento</ion-label>
+            <ion-select formControlName="condicoes" multiple ok-text="Ok" cancel-text="Cancelar">
+                <ion-select-option *ngFor="let condicao of condsLista" [value]="condicao.id">{{
+                    condicao.nome
+                }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Marca</ion-label>
+            <ion-select formControlName="marca" ok-text="Ok" cancel-text="Cancelar">
+                <ion-select-option *ngFor="let marca of marcasLista" [value]="marca.id">{{
+                    marca.nome
+                }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Imagem (URL): </ion-label>
+            <ion-input formControlName="imagem" type="text"> </ion-input>
+        </ion-item>
+
+        <ion-fab vertical="bottom" horizontal="end">
+            <ion-fab-button (click)="salvar()" [disabled]="!carrosForm.valid">
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </form>
+</ion-content>

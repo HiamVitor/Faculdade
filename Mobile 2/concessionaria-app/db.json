@@ -1,0 +1,50 @@
+{
+  "marcas": [
+    {
+      "nome": "Ford",
+      "pais": "us",
+      "id": 1
+    },
+    {
+      "nome": "Lamborghini",
+      "pais": "it",
+      "id": 4
+    },
+    {
+      "nome": "Chevrolet",
+      "pais": "ad",
+      "id": 5
+    }
+  ],
+  "formasPagto": [
+    {
+      "nome": "À vista",
+      "descricao": "À vista",
+      "id": 1
+    }
+  ],
+  "carros": [
+    {
+      "modelo": "Lamborghini",
+      "marca": 4,
+      "formas": [
+        1
+      ],
+      "preco": 1200000,
+      "imagem": "https://image.webmotors.com.br/_fotos/AnuncioUsados/gigante/2021/202104/20210419/lamborghini-gallardo-5.0-v10-gasolina-superleggera-egear-WMIMAGEM1409117205.jpg",
+      "ano": "2009",
+      "id": 2
+    },
+    {
+      "modelo": "Camaro",
+      "marca": 1,
+      "formas": [
+        1
+      ],
+      "preco": 20000,
+      "imagem": "https://s3.amazonaws.com/www.revistacarro.com.br/static/images/uploads/2016-chevrolet-camaro-ss-5_txt_620x467.jpg",
+      "ano": "2009",
+      "id": 3
+    }
+  ]
+}

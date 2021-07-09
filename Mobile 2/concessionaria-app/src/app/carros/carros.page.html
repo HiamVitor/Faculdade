@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Carros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let carro of carros" #slidingItem>
+      <ion-item-options side="start" color="warning">
+        <ion-item-option (click)="editar(carro, slidingItem)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="carro.imagem" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{carro.modelo}}</h2>
+          <h3>Marca: <ion-text color="medium">{{carro.marcaNome}}</ion-text></h3>
+          <h3>Ano: <ion-text color="medium">{{carro.ano}}</ion-text></h3>
+          <h3>Placa: <ion-text color="medium">{{carro.placa}}</ion-text></h3>
+        </ion-label>
+        <ion-note slot="end"
+                  color="danger">
+          <h4>{{carro.preco | currency:'BRL'}}</h4>
+        </ion-note>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger"
+                         (click)="exclusao(carro, slidingItem)">
+          <ion-icon slot="icon-only"
+                    name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button [routerLink]="['cadastro']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
